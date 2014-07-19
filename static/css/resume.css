@@ -1,0 +1,55 @@
+#content-container{
+  background-color: white;
+  margin-top: 70px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 30px -5px #333;
+}
+canvas{
+  cursor: crosshair;
+}
+#content-container{
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 30px -5px #333;
+}
+#mug_shot{
+  border-radius: 50px;
+}
+#mug_shot_2{
+  margin: 40px;
+}
+.alert{
+  background-color: #D9EEFA;
+}
+.app-icon{
+  width: 200px;
+  border-radius: 40px;
+  margin: 10px;
+}
+.lab-icon{
+  border-radius: 40px;
+  margin: 10px;
+}
+img, iframe{
+  box-shadow: 0px 0px 10px 5px #CCC;
+}
+#jquery_jplayer {
+  display:none;
+}
+.row-margin-hack{
+  margin-top: 60px;
+}
+.text-right-hack{
+  text-align: right;
+}
+.text-center-hack{
+  text-align: center;
+}
+.no-box-shadow{
+  box-shadow: none;
+}
+.page-header{
+  margin-top: -10px;
+}

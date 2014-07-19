@@ -1,0 +1,19 @@
+{
+  "name": "kaiserapps-server",
+  "version": "0.0.1",
+  "description": "Kaiserapps Server",
+  "author": {
+    "name": "Ben Kaiser",
+    "email": "benjaminjkaiser@gmail.com",
+    "url":  "http://kaiserapps.com"
+  },
+  "homepage": "http://www.kaiserapps.com",
+  "dependencies": {
+    "express.io":          "1.x",
+    "swig":             "*"
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+  "private": true,
+  "main": "server.js"
+}

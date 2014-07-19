@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% block title %}Kaiserapps{% endblock %}</title>
+
+  <script type="text/javascript" src="/static/js/libs/head.load.min.js"></script>
+
+  <link rel="icon" type="image/png" href="/static/img/favicon.png">
+
+  <script type="text/javascript">
+  head.load(
+    "/static/css/lib/bootstrap.min.css",
+    "/static/css/lib/font-awesome.min.css",
+    "/static/css/main.css"
+    );
+  </script>
+  {% block head %}
+  {% endblock %}
+</head>
+<body>
+  {% if menu %}
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Kaiserapps</a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="http://blog.kaiserapps.com" target="_blank">Blog</a></li>
+          <li><a href="https://github.com/benkaiser" target="_blank">Github</a></li>
+          <li><a href="/lab">Lab</a></li>
+          <li><a href="/resume" target="_blank">Resume</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% endif %}
+  <div class='container' id="kaiserapps_content">
+    {% block content %}
+    {% endblock %}
+    <hr/>
+    <div class="row footer_row">
+      <div class="col-sm-4"><p>&copy;
+        <script type='text/javascript'>document.write((new Date()).getFullYear())</script>
+         Benjamin Kaiser - Kaiserapps</p></div>
+      <div class="col-sm-1 pull-right"><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background: transparent;">
+        <iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1405750308670" name="I0_1405750308670" src="https://apis.google.com/u/0/_/+1/fastbutton?usegapi=1&amp;size=medium&amp;origin=http%3A%2F%2Fwww.kaiserapps.com&amp;url=http%3A%2F%2Fwww.kaiserapps.com%2F&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en_GB.JLuVHZJZ7_8.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Ft%3Dzcms%2Frs%3DAItRSTORWpkhsO40fjmPTOWaMy4Nzjcjmw#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh&amp;id=I0_1405750308670&amp;parent=http%3A%2F%2Fwww.kaiserapps.com&amp;pfname=&amp;rpctoken=12552203" data-gapiattached="true" title="+1">
+        </iframe></div></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    head.js(
+      "/static/js/libs/jquery.min.js",
+      "/static/js/libs/bootstrap.min.js",
+      "/static/js/lab/backgrid.js",
+      "/static/js/index.js"
+      );
+  </script>
+  {% block scripts %}
+  {% endblock %}
+</body>
+</html>
