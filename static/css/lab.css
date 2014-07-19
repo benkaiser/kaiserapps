@@ -6,9 +6,6 @@ html,body{
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   cursor: crosshair;
 }
-body{
-  background-color: #4bf;
-}
 #center{
   width: 800px;
   background: none;

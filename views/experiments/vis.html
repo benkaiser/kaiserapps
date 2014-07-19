@@ -1,0 +1,48 @@
+{% extends '../base/experiment_base.html' %}
+
+{% block title %}Music Visualiser{% endblock %}
+{% block %}Music Visualiser{% endblock %}
+
+{% block head %}
+<script src="/static/js/libs/Three.js"></script>
+<script src="/static/js/libs/Stats.js"></script>
+<script src="/static/js/lab/vis.js"></script>
+<style>
+  html, body, #canvas{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  #loading{
+    position: absolute;
+    top: 50%;
+    height: 100px;
+    width: 100%;
+    margin-top: -50px;
+    text-align: center;
+    font: 50px "Arial";
+  }
+  #name{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: right;
+    font: 20px "Arial";
+  }
+  #credit{
+    position: absolute;
+    bottom: 50px;
+    right: 10px;
+    text-align: right;
+    font: 20px "Arial";
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="loading">Webpage loading</div>
+<div id="name">No song selected</div>
+<div id="credit"><a href="http://airtightinteractive.com/demos/js/reactive/">Original code</a> by <a href="http://airtightinteractive.com/">Felix Turner</a></div>
+<canvas id="canvas"></canvas>
+{% endblock %}

@@ -10,6 +10,12 @@ stats.domElement.style.zIndex = '5';
 
 document.body.appendChild( stats.domElement );
 
+// rearrange pause/play and songinfo if in iframe
+if(isIFrame){
+  $("#pp").css('bottom', '5px');
+  $("#song").css('bottom', '5px');
+}
+
 // Ben's variables
 var w = window.innerWidth,
   h = window.innerHeight;

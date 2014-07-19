@@ -30,7 +30,6 @@ function change(x) {
     $(objects[o].item).children(".switch").html('<img class="experimentImg" src="'+objects[o].img+'" alt="'+objects[o].name+' example" />');
   }
   // now set the primary one to an iframe
-  console.log([objects[x], x]);
   $(objects[x].item).children(".switch").html("<iframe class='appFrame' src='lab/"+objects[x].shortHand+"'></iframe>");
 }
 
@@ -47,10 +46,10 @@ addItem("Fader", "Just a simple screen saver idea I got when watching the animat
 addItem("Tunnel Fader", "Fader mod to look like a tunnel.", "tunnelfader.png", "tunnelfader",1);
 addItem("Tunnel", "Just a tripping tunnel idea I got when talking to my brother Josh.", "tunnel.png", "tunnel",1);
 addItem("Snafu!", "My attempt at recreating an awesome arcade game.", "snafu.png", "snafu",1);
-addItem("Underwater Bubbles", "lab/underwaterbubbles", "Simply a fun application that simulates bubbles floating up in water. Move the cursor to move the spawn point of the bubbles.", "underwaterbubbles.png", "ub",1);
-addItem("Dual Bubble Cannons", "lab/dualbubblecannons", "Just a nice screen saver, no interactivity (sorry).", "dbc.png", "dbc",1);
-addItem("Hearts", "lab/hearts", "A remix of the underwater bubbles creation (using text hearts instead of circles).", "hearts.png", "hearts",1);
-addItem("Prime Nightmare", "lab/primes", "I remixed the hearts example to show prime numbers in sequence coming from the cursor. I made it for my brother Josh.", "primenightmare.png", "prime",1);
+addItem("Underwater Bubbles", "Simply a fun application that simulates bubbles floating up in water. Move the cursor to move the spawn point of the bubbles.", "underwaterbubbles.png", "ub",1);
+addItem("Dual Bubble Cannons", "Just a nice screen saver, no interactivity (sorry).", "dbc.png", "dbc",1);
+addItem("Hearts", "A remix of the underwater bubbles creation (using text hearts instead of circles).", "hearts.png", "hearts",1);
+addItem("Prime Nightmare", "I remixed the hearts example to show prime numbers in sequence coming from the cursor. I made it for my brother Josh.", "primenightmare.png", "prime",1);
 addItem("XTT", "Custom message making. Using canvas text drawing and css3 @font-face. (its called XTT because josh picked that random name, we think it now stands for eXtensive Text Transposer, which means absolutely nothing and was really just a mix up of the characters in txt).", "xtt.png", "xtt",1);
 addItem("Mojo vs. Mine", "First game I created on canvas that got me interested.", "mojo.png", "mojo",0);
 addItem("Ball in Box", "Experimenting with a moving spawn point.", "bib.png", "bib",1);
