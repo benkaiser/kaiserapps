@@ -147,17 +147,6 @@ $(document).ready(function(){
     <div class="page-header">\
       <h1>Personal Projects</h1>\
     </div>\
-    <div class="row-fluid clearfix text-right-hack">\
-    <div class="col-sm-5 col-sm-offset-1">\
-    <h2><a href="http://kaiserapps.com/apps.php">Kaiserapps Skill Builder Series</a></h2>\
-    <p>Back in 2010 I developed <a href="http://kaiserapps.com/apps.php">two iPhone/iPad applications</a> that got me started in programming.\
-    These applications (Skill Builder Spelling and Skill Builder Numeracy) were created to help people improve their spelling and numeracy skills at their own level.\
-    They now receive around 200-300 downloads a day.\
-    Both applications are currently free due to legal restrictions on developer age by Apple<p>\
-    </div><div class="col-sm-5">\
-    <img class="pull-left app-icon" src="/static/img/resume/sbn_icon.png"></img>\
-    <img class="pull-left app-icon" src="/static/img/resume/sbs_icon.png"></img>\
-    </div></div>\
     <div class="row-fluid clearfix row-margin-hack">\
     <div class="col-sm-5 col-sm-offset-1"><img class="pull-right lab-icon" src="/static/img/resume/lab.png"/></div>\
     <div class="col-sm-5">\

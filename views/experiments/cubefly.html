@@ -1,0 +1,87 @@
+{% extends '../base/experiment_base.html' %}
+
+{% block title %}Cube Fly{% endblock %}
+{% block %}Cube Fly{% endblock %}
+
+{% block head %}
+<style>
+  #container {
+    background: #000;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: -5;
+  }
+  #time{
+    position: absolute;
+    top: 0;
+    height: 200px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+    font: 20px "Arial";
+  }
+  #text{
+    position: absolute;
+    top: 50%;
+    margin-top: -100px;
+    height: 200px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 4;
+  }
+  #heading{
+    color: rgba(0,0,0,0.8);
+    font: 100px "Arial Black";
+  }
+  #subtitle{
+    color: rgba(0,0,0,0.5);
+    font: 30px "Arial";
+  }
+  #pp{
+    position: absolute;
+    left: 5px;
+    bottom: 50px;
+    text-align: left;
+    z-index: 4;
+    font: 15px "Arial Black";
+    padding: 4px;
+  }
+  #song{
+    position: absolute;
+    right: 10px;
+    bottom: 55px;
+    text-align: right;
+    z-index: 4;
+  }
+  #song, #song a{
+    font: 20px "Arial";
+    text-decoration: none;
+  }
+</style>
+<script src="/static/js/libs/Three.js"></script>
+<script src="/static/js/libs/Stats.js"></script>
+{% endblock %}﻿
+
+{% block content %}
+  <div id="container">
+  </div>
+
+  <div id="time"></div>
+
+  <div id="text">
+    <span id="heading"></span>
+    <br/>
+    <span id="subtitle"></span>
+  </div>
+
+  <div id="song">Song: <a href="http://totallyenormousextinctdinosaurs.tumblr.com/" target="_blank">Tapes and Money - TEED</a></div>
+  <div id="pp">Pause Music</div>
+
+  <audio id="audioElem" autoplay="autoplay" loop="loop">
+    <source src="/static/res/tam.mp3" type="audio/mpeg">
+  </audio>
+{% endblock %}
