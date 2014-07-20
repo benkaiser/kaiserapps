@@ -39,7 +39,7 @@ addItem("Cube Fly", "Cube Fly is an immersive 3d game where you are the grey cub
 addItem("Vis", "Music visualiser in javascript using chromes audio API.", "vis.png", "vis",1);
 addItem("Psy!", "Psy is an interactive painting application that lets you create a drawing made out of large squares. It starts you off with a shape for you to work around. Use the panel in the top right to create your drawing, then save your shape and share it with your friends.", "psy.png", "psy",1);
 addItem("Wobble", "Wobble was just a fun little idea I had (I was getting used to the quadriaticCurveTo() function)", "wobble.png", "wobble",1);
-addItem("Spider Wobble", "Changing spawn point version over wobble (creates lines autonomously).", "spiderwobble.png", "swobble",1);
+addItem("Spider Wobble", "Changing spawn point version over wobble (creates lines autonomously).", "spiderwobble.png", "spiderwobble",1);
 addItem("Nexus", "Awesome animation that I was inspired by (it is a standard android live wallpaper). So I decided to write my own implementation in canvas with a little kaiserapps touch.", "nexus.png", "nexus",1);
 addItem("Firework Birthday Card Creator", "Originally a custom birthday card created for my friend, I spent a few minutes making it dynamic so anyone can make any card and send it to anyone! Makes giving birthday cards nice and simple for myself.", "birthday.png", "birthday",1);
 addItem("Fader", "Just a simple screen saver idea I got when watching the animations behind the lyrics on the screen at church. Co-developed with the help of Eden Vicary.", "fader.png", "fader",1);

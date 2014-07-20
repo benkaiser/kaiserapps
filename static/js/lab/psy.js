@@ -31,9 +31,6 @@ var FizzyText = function() {
   this.reset = function (){
     reset();
   };
-  this.save = function (){
-    sendToServer();
-  };
   this.calcsize = function() {
     calcSize(true);
     render();
@@ -241,40 +238,6 @@ reset();
 // UNCOMMENT FOR SEIZURES
 //setInterval(reset,10000);
 
-
-function sendToServer(){
-  // First let the UI know it is saving
-  $("#response").html("Saving...");
-  $("#response").css("display","block");
-
-  calcSize(true);
-  render();
-
-  // put the image on a new canvas
-  var tmpw = (wl+1)*squareSize;
-  var tmph = (hl+1)*squareSize;
-  hiddenCanvas.width = tmpw;
-  hiddenCanvas.height = tmph;
-
-  hctx.putImageData(ctx.getImageData(xd*squareSize + parseInt(w/2) - squareSize/2, yd*squareSize + parseInt(h/2) - squareSize/2, tmpw, tmph),0,0);
-
-  // send the new canvas data to the server
-  var canvasData = hiddenCanvas.toDataURL("image/png");
-
-  var ajax = new XMLHttpRequest();
-
-  ajax.onreadystatechange=function(){
-    if (ajax.readyState==4 && ajax.status==200){
-      var num = ajax.responseText;
-      $("#response").html("File Saved! Link: <a href='http://www.kaiserapps.com/fun/psy/view.php?id="+num+"'>kaiserapps.com/fun/psy/view.php?id="+num+"</a>");
-    }
-  }
-
-  ajax.open("POST", 'testSave.php?c=' + escape(text.backgroundColor), true);
-  ajax.setRequestHeader('Content-Type', 'application/upload');
-  ajax.send(canvasData );
-}
-
 /* DAT.GUI stuff */
 
 window.onload = function() {
@@ -287,7 +250,6 @@ window.onload = function() {
   gui.add(text,'allowOutside').listen();
   gui.add(text,'calcsize');
   gui.add(text,'reset');
-  gui.add(text, 'save');
 
   var f1 = gui.addFolder("Render Options (advanced)");
   f1.add(text, 'stopChance',.001,1);
