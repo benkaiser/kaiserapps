@@ -37,6 +37,8 @@ html, body, #canvas{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  margin-top: -100px !important;
 }
 </style>
 {% endblock %}
@@ -44,7 +46,7 @@ html, body, #canvas{
 {% block content %}
 <div id="birthdayItem">
   <canvas id="canvas"></canvas>
-  <h1 id='bday'>Happy `age` Birthday `name`!</h1>
+  <h1 id='bday'></h1>
 </div>
 <div id="formItem">
   <form method="GET" action='birthday'>
