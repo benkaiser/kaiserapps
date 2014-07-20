@@ -1,6 +1,6 @@
 {% extends '../base/experiment_base.html' %}
 
-{% block title %}Tunnel{% endblock %}
+{% block title %}Snafu{% endblock %}
 
 {% block head %}
 <script src="/static/js/libs/dat.gui.js"></script>
@@ -13,23 +13,24 @@ html, body, #canvas{
   overflow: hidden;
 }
 #message{
-	position: absolute;
-	width: 100%;
-	height: 100px;
-	top: 50%;
-	margin-top: -50px;
-	text-align: center;
-	color: #FFF;
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  top: 50%;
+  margin-top: -50px;
+  text-align: center;
+  color: #FFF;
 }
 #center{
-	font: 100px Arial;
+  font: 100px Arial;
 }
 #subtitle{
-	font: 50px Arial;
+  font: 50px Arial;
 }
 </style>
 {% endblock %}
 
 {% block content %}
 <canvas id="canvas"></canvas>
+<div id="message"><span id="center">SNAFU!</span><br/><span id="subtitle">Click to start (p1. wasd p2. arrow keys)</span></div>
 {% endblock %}
