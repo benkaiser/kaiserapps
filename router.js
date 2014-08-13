@@ -15,7 +15,7 @@ module.exports = function(app_ref){
     res.render('resume');
   });
   // alias for resume
-  app.get("/fun/resume", function(req, res){ res.redirect("/resume")});
+  app.get("/fun/resume", function(req, res){ res.redirect("/resume"); });
   // main lab page
   app.get("/lab", function(req, res){
     res.render('lab');
@@ -23,4 +23,4 @@ module.exports = function(app_ref){
   app.get("/lab/:experiment", function(req, res){
     res.render('experiments/' + req.params.experiment, {experiment: req.params.experiment});
   });
-}
+};

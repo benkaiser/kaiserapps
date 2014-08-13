@@ -57,12 +57,14 @@ function addTimeout(){
 addTimeout();
 
 function startFirework(x, y){
-  if(x == null){
+  if(x === null){
     addTimeout();
   }
 
-  x = (x == null) ? document.width*Math.random() : x;
-  y = (y == null) ? document.height*Math.random() : y;
+  x = (x === null) ? window.innerWidth*Math.random() : x;
+  y = (y === null) ? window.innerHeight*Math.random() : y;
+
+  console.log([x, y]);
 
   var firworkgroup = new Array();
 
@@ -133,9 +135,12 @@ function getGravity(time){
   return Math.pow(time,2) / 70;
 }
 
+var time = 0;
 function main() {
   update();
-  render();
+  if(time++ % 2 === 0){
+    render();
+  }
 };
 
 // instead of setInterval(main, 16), is more effiecient for animating
