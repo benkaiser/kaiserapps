@@ -16,6 +16,7 @@ module.exports = function(app_ref){
   });
   // alias for resume
   app.get("/fun/resume", function(req, res){ res.redirect("/resume"); });
+  app.get("/lab/resume", function(req, res){ res.redirect("/resume"); });
   // main lab page
   app.get("/lab", function(req, res){
     res.render('lab');
