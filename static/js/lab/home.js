@@ -12,7 +12,7 @@ function addItem(name, description, img, shortHand,displayTry){
   }
   img = "/static/img/lab/" + img;
 
-  var tmpItem = $('<a name="'+shortHand+'" class="app" target="_blank" href="lab/'+shortHand+'"><h2>'+name+'</h2></a><p class="options">'+tryV+'<a target="_blank" href="lab/'+shortHand+'">open in new window</a></p><a class="app" target="_blank" href="lab/'+shortHand+'"><div class="switch"><img class="experimentImg" src="'+img+'" alt="'+name+' example" /></div><p class="caption">'+description+'</p></a>');
+  var tmpItem = $('<a name="'+shortHand+'" class="app" target="_blank" href="/lab/'+shortHand+'"><h2>'+name+'</h2></a><p class="options">'+tryV+'<a target="_blank" href="lab/'+shortHand+'">open in new window</a></p><a class="app" target="_blank" href="lab/'+shortHand+'"><div class="switch"><img class="experimentImg" src="'+img+'" alt="'+name+' example" /></div><p class="caption">'+description+'</p></a>');
   $("#whitecenter").append(tmpItem);
   var tmpArray = {
     item: tmpItem,
