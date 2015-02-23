@@ -13,6 +13,19 @@ $(document).ready(function(){
       <div class="page-header">\
         <h1>Education</h1>\
       </div>\
+      <div class="span12">\
+      <h2>University of Melbourne</h2>\
+      <h4>Info</h4>\
+      <p>Degree Name: Master of Engineering (Software)</p>\
+      <p>Status: Currently completing</p>\
+      <h4>Units</h4><table class="table table-striped"><tbody><tr><th>Code</th><th>Unit Name</th><th>Grade</th></tr>\
+      <tr><td><i class="icon-file"></i><a href="https://handbook.unimelb.edu.au/view/2014/COMP90007">COMP90007</a></td><td>Internet Technologies</td><td>H1 (HD)</td></tr>\
+      <tr><td><i class="icon-file"></i><a href="https://handbook.unimelb.edu.au/view/2014/COMP90045">COMP90045</a></td><td>Programming Language Implementation</td><td>H1 (HD)</td></tr>\
+      <tr><td><i class="icon-file"></i><a href="https://handbook.unimelb.edu.au/view/2014/COMP90038">COMP90038</a></td><td>Algorithms and Complexity</td><td>H2B (D)</td></tr>\
+      <tr><td><i class="icon-file"></i><a href="https://handbook.unimelb.edu.au/view/2014/COMP90015">COMP90015</a></td><td>Distributed Systems</td><td>H1 (HD)</td></tr>\
+      <tr><td><i class="icon-file"></i><a href="https://handbook.unimelb.edu.au/view/2014/SWEN90006">SWEN90006</a></td><td>Software Engineering Methods</td><td>H2A (D)</td></tr>\
+      <tr><td><i class="icon-file"></i><a href="https://handbook.unimelb.edu.au/view/2014/SWEN90014">SWEN90014</a></td><td>Masters Software Engineering Project</td><td>H1 (HD)</td></tr>\
+      </tbody></table></div>\
       <div class="row"><div class="col-sm-6">\
       <h2>RMIT</h2>\
       <h4>Info</h4>\
@@ -68,6 +81,35 @@ $(document).ready(function(){
       <div class="page-header">\
         <h1>Work</h1>\
       </div>\
+      <h2>Christian Vision</h2>\
+      <div class="row">\
+      <div class="col-sm-6">\
+        <h4>Company Description</h4>\
+        <p>\
+        Christian Vision is a large international Christian religious organization. One of it\'s key products is a website called <a href="http://www.yesheis.com">yesheis</a>.\
+        </p>\
+      </div>\
+      <div class="col-sm-6">\
+        <h4>Job Details</h4>\
+        <p><strong>Job-title:</strong> Developer</p>\
+        <p><strong>Emplyment type:</strong> Short-term Contract</p>\
+        <p><strong>Dates of Employment:</strong> December 2014 - February 2015</p>\
+      </div></div>\
+      <h4>Job Description</h4>\
+      <p>To build systems to assist the developers and other teams throughout the organisation.</p>\
+      <h4>Key Accomplishments</h4>\
+      <ul>\
+      <li>Built a website to share statistics throughout the organisation using <a href="http://nodejs.org/">NodeJS</a> and <a href="http://www.mongodb.org/">MongoDB</a>.</li>\
+      <li>Created a small suite of automated browser tests for the main <a href="http://www.yesheis.com">yesheis</a> website using <a href="http://www.seleniumhq.org/">Selenium</a>.</li>\
+      <li>Converted a design psd into a multilingual campaign webpage (<a href="http://yesheis.com/en/easter">link to campaign while active</a>).</li>\
+      </ul>\
+      <h4>Christian Vision Referee\'s</h4>\
+      <address>\
+        <strong>Phil Smith</strong><br>\
+        <abbr title="Work">W:</abbr> (+61) 07 5477 1555<br/>\
+        <abbr title="Mobile">M:</abbr> (+61) 0427 314 833<br/>\
+        Role: Development Manager\
+      </address>\
       <h2>Kaisercraft</h2>\
       <div class="row">\
       <div class="col-sm-6">\
@@ -78,6 +120,7 @@ $(document).ready(function(){
       </div><div class="col-sm-6">\
       <h4>Job Details</h4>\
       <p><strong>Job-title:</strong> Web Developer</p>\
+      <p><strong>Emplyment type:</strong> Part-time</p>\
       <p><strong>Dates of Employment:</strong> August 2011 - Current</p>\
       </div></div>\
       <h4>Job Description</h4>\
@@ -97,7 +140,7 @@ $(document).ready(function(){
       </ul>\
       <h4>Key Statistics of Accomplishments</h4>\
       <ul>\
-        <li>Over $7 Million in sales have been processed in the new wholesale cart</li>\
+        <li>Over $9 Million in sales have been processed in the new wholesale cart</li>\
         <li>Over 600 customers use the wholesale cart</li>\
         <li>Databased almost 7000 product skews including categorising and adding images for all products.</li>\
       </ul>\
@@ -107,13 +150,13 @@ $(document).ready(function(){
         <li>Javascript (Used extensively to make responsive ordering pages)</li>\
         <li>PHP (for all server-side code)</li>\
         <li>MySQL</li>\
-        <li>Minor amounts of Python and Perl (form scripting to resize images before publishing to web)</li>\
+        <li>Minor amounts of Python and Perl (for scripting to resize images before publishing to web)</li>\
         <li>Jquery and Jquery-ui for javascript and minor animations</li>\
         <li><a href="http://twitter.github.com/bootstrap/">Bootstrap</a> for UI framework.</li>\
       </ul>\
       <h4>Technologies and Development Tools Used</h4>\
       <ul>\
-        <li>Originally <a href="http://panic.com/coda/">Coda</a> and recently <a href="http://www.sublimetext.com/2">Sublime Text 2</a> for IDE</li>\
+        <li><a href="http://panic.com/coda/">Coda</a> then <a href="http://www.sublimetext.com/2">Sublime Text 2</a> and now <a href="https://atom.io/">Atom</a> for IDE</li>\
         <li><a href="https://bitbucket.org/">Bitbucket</a> for source code management</li>\
         <li>LAMP stack</li>\
       </ul>\
@@ -139,7 +182,7 @@ $(document).ready(function(){
       </address>\
       <h4>Other Notes</h4>\
       <div class="alert">For the entirety of my employment at Kaisercraft, I have been the only web developer, as such everything you see at <a href="http://www.kaisercraft.com.au">the kaisercraft website</a> was created by me.<br/>\
-      Also note if you would like to view my accomplishments developing the backend of the website, please contact me and I can arrange this along with written authorisation from the Director.</div>\
+      Also note if you would like to view my accomplishments developing the backend of the website, please contact me and I can arrange for this along with written authorisation from the Director.</div>\
       '+getSwitchButtons(false)+'\
     ');
 
@@ -167,7 +210,7 @@ $(document).ready(function(){
     <div class="col-sm-5 col-sm-offset-1"><img class="pull-right lab-icon" src="/static/img/resume/webdevtools.png"/></div>\
     <div class="col-sm-5">\
     <h3><a href="https://chrome.google.com/webstore/search/kaiserapps">Chrome Apps</a></h3>\
-    <p>I have 5 Chrome apps and 1 Chrome extension that I have made over the past few years. Two of which have almost 10,000 weekly users each.\
+    <p>I have 5 Chrome apps and 1 Chrome extension that I have created over the past few years. Two of which have almost 10,000 weekly users each.\
     </p></div>\
     </div>\
     '+getSwitchButtons(false)+'\
@@ -195,7 +238,7 @@ $(document).ready(function(){
     </div></div>\
     <div class="row-fluid clearfix row-margin-hack"><div class="col-sm-5 col-sm-offset-1 text-right-hack">\
     <h2>Slurpees!</h2>\
-    <p>My favourite beverage is 7-Eleven Cola Slurpees. To the right is a picture of me with a 6 Litre Slurpee on 7-Eleven\'s BYO cup day.</p></div>\
+    <p>My favourite beverage is 7-Eleven Cola Slurpees. Here is a picture of me with a 5 Litre Slurpee on 7-Eleven\'s BYO cup day in 2014.</p></div>\
     <div class="col-sm-6">\
     <img class="" src="/static/img/resume/slurpee_small.jpg" alt="me drinking a slurpee"/>\
     </div></div>\

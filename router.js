@@ -14,6 +14,9 @@ module.exports = function(app_ref){
   app.get("/resume", function(req, res){
     res.render('resume');
   });
+  app.get("/resume/print", function(req, res){
+    res.render('resume_print');
+  });
   // alias for resume
   app.get("/fun/resume", function(req, res){ res.redirect("/resume"); });
   app.get("/lab/resume", function(req, res){ res.redirect("/resume"); });
