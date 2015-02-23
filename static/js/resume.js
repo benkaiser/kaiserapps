@@ -200,7 +200,7 @@ $(document).ready(function(){
     </div>\
     <div class="row-fluid clearfix text-right-hack row-margin-hack">\
     <div class="col-sm-5 col-sm-offset-1">\
-    <h2><a href="https://github.com/benkaiser/">Github Projects</a></h2>\
+    <h3><a href="https://github.com/benkaiser/">Github Projects</a></h3>\
     <p>I keep all my open source creations on Github. Some of the more popular ones are my node.js based music player (<a href="https://github.com/benkaiser/node-music-player">node-music-player</a>),\
     and my node.js based server that allows you to remotely control control functionality on another computer (<a href="https://github.com/benkaiser/desktop-command-remote">desktop-command-remote</a>).<p>\
     </div><div class="col-sm-5">\
@@ -223,41 +223,41 @@ $(document).ready(function(){
       <h1>About Me</h1>\
     </div>\
     <div class="clearfix">\
-    <div class="row-fluid clearfix"><div class="col-sm-5 col-sm-offset-1 text-right-hack"><h2>I am a dancer</h2>\
+    <div class="row-fluid clearfix"><div class="col-sm-5 col-sm-offset-1 text-right-hack"><h3>I am a dancer</h3>\
     <p>Back in late 2009 I started learning how to street dance in several styles such as Shuffling, Liquid Rave, Tecktonik and others. These have progressed over the past few years and the video to the right is a dedication I made to a friend of mine in late 2011.</p></div>\
     <div class="col-sm-6"><iframe width="519" height="292" src="http://www.youtube.com/embed/pLs73kMJb_g?theme=light&color=white" frameborder="0" allowfullscreen></iframe>\
     </div></div>\
     <div class="row-fluid clearfix row-margin-hack"><div class="col-sm-6 text-right-hack">\
     <iframe width="519" height="292" src="http://www.youtube.com/embed/lHAWDkAIn78?theme=light&color=white" frameborder="0" allowfullscreen></iframe>\
     </div><div class="col-sm-5">\
-    <h2>Listen2Learners</h2>\
+    <h3>Listen2Learners</h3>\
     <p>In 2010 I was chosen to attended an event called <a href="http://www.heppell.net/bva/bva7">Listen2Learners bva7</a>. This was an event hosted by the Victorian Department of Education. To be chosen for the event, a school had to show a technology project their students were working on.\
     I put in an application with my then iPhone app I had been working on. The event was about students showing how their use of technology could be used throughout the schooling system. Here is a video interview with me representing my then high school on the day.\
     <br/>For more on the event please visit <a href="http://www.heppell.net/bva/bva7/western-heights">this link.</a>\
     </p>\
     </div></div>\
     <div class="row-fluid clearfix row-margin-hack"><div class="col-sm-5 col-sm-offset-1 text-right-hack">\
-    <h2>Slurpees!</h2>\
-    <p>My favourite beverage is 7-Eleven Cola Slurpees. Here is a picture of me with a 5 Litre Slurpee on 7-Eleven\'s BYO cup day in 2014.</p></div>\
+    <span class="web_only"><h3>Slurpees!</h3>\
+    <p>My favourite beverage is 7-Eleven Cola Slurpees. Here is a picture of me with a 5 Litre Slurpee on 7-Eleven\'s BYO cup day in 2014.</p></div></span>\
     <div class="col-sm-6">\
     <img class="" src="/static/img/resume/slurpee_small.jpg" alt="me drinking a slurpee"/>\
     </div></div>\
     <div class="row-fluid row-margin-hack clearfix">\
-    <h2>What Tech I Run On</h2>\
+    <span class="web_only"><h3>What Tech I Run On</h3>\
     <table class="table">\
     <tr><th>Item</th><th>I Use</th><th>Running</th></tr>\
     <tr><td>Desktop</td><td>Custom Built PC</td><td>Arch Linux and Windows 8</td></tr>\
     <tr><td>Laptop</td><td>Samsung Series 9 (2012)</td><td>Arch Linux and Windows 7</td></tr>\
     <tr><td>Phone</td><td>LG Nexus 5</td><td>Paranoid Android 4.0 (KitKat 4.4)</td></tr>\
     </table>\
-    </div>\
+    </div></span>\
     </div>\
     '+getSwitchButtons(false)+'\
     ');
 
   addGroup("Contact Information",'\
     <div class="page-header">\
-      <h1>Contact Information and Online Profiles</h1>\
+      <h1>Contact Information and Profiles</h1>\
     </div>\
     <div class="row-fluid">\
     <div class="col-sm-12"><address>\
@@ -284,12 +284,24 @@ $(document).ready(function(){
 });
 
 function printall(){
-  joint = "<p>Please visit <a href='http://lab.kaiserapps.com/resume'>the original web resume</a> for the full experience.</p>";
+  var joint = "";
   for(i in content){
-    joint += content[i].text;
+    if(i == 0){
+      continue;
+    }
+    if(i == content.length - 1){
+      joint = content[i].text + joint;
+    } else {
+      joint += content[i].text;
+    }
   }
+  // comment so people know there is a better version of this
+  joint = "<p>Please visit <a href='http://lab.kaiserapps.com/resume'>the original web resume</a> for the full experience.</p>" + joint;
   $("#print-content").html(joint);
-  $("p").filter(".switchbuttons").remove()
+  $("p").filter(".switchbuttons").remove();
+  $("iframe").remove();
+  $("img").remove();
+  $(".web_only").remove();
 }
 
 // function in case I wanted to change all of the units in one spot
