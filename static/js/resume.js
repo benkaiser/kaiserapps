@@ -4,7 +4,7 @@ var latest = 0;
 
 $(document).ready(function(){
   addGroup("Home",'<div class="jumbotron clearfix">\
-      <img class="pull-right" id="mug_shot" src="/static/img/resume/mug_shot_small.jpg" alt="mug_shot"/>\
+      <img class="pull-right" id="mug_shot" src="/static/img/resume/mug_shot_4_small.jpg" alt="mug_shot"/>\
       <h1>Benjamin Kaiser</h1>\
       <p>Welcome to the Resume of Benjamin Kaiser.</p>\
       <p><div class="btn btn-primary btn-large" onclick="changeNext()">Next <i class="icon-white icon-arrow-right"></i></div></p>\
@@ -222,8 +222,16 @@ $(document).ready(function(){
     <div class="page-header">\
       <h1>About Me</h1>\
     </div>\
-    <div class="clearfix">\
-    <div class="row-fluid clearfix"><div class="col-sm-5 col-sm-offset-1 text-right-hack"><h3>I am a dancer</h3>\
+    <div class="row-fluid clearfix row-margin-hack"><div class="col-sm-6 text-right-hack">\
+    <img class="gci_image" src="/static/img/resume/google_codein.jpg" alt="me in front of the google self driving car"/>\
+    </div><div class="col-sm-5">\
+    <h3>Google Code-in 2013</h3>\
+    <p>In the summer of 2013 I compteted in Google Code-in, a competition for high-school age students to show their coding skills by completing tasks for some open source projects.\
+    After the 50 days of the competition, I was selected as one of the grand prize winners, and was invited to visit the Google head office in Mountain View, CA.\
+    <br/>For more information, please see the <a href="http://google-opensource.blogspot.com.au/2014/01/google-code-in-2013-drumroll-please.html">winners announcement post.</a>\
+    </p>\
+    </div></div>\
+    <div class="row-fluid clearfix row-margin-hack"><div class="col-sm-5 col-sm-offset-1 text-right-hack"><h3>I am a dancer</h3>\
     <p>Back in late 2009 I started learning how to street dance in several styles such as Shuffling, Liquid Rave, Tecktonik and others. These have progressed over the past few years and the video to the right is a dedication I made to a friend of mine in late 2011.</p></div>\
     <div class="col-sm-6"><iframe width="519" height="292" src="http://www.youtube.com/embed/pLs73kMJb_g?theme=light&color=white" frameborder="0" allowfullscreen></iframe>\
     </div></div>\
