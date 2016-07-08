@@ -9,8 +9,8 @@
   },
   "homepage": "http://www.kaiserapps.com",
   "dependencies": {
-    "express.io":          "1.x",
-    "swig":             "*"
+    "express.io": "1.x",
+    "swig": "*"
   },
   "devDependencies": {},
   "bundleDependencies": [],

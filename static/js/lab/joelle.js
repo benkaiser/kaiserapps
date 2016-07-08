@@ -6,18 +6,30 @@ h = window.innerHeight;
 canvas.width = w;
 canvas.height = h;
 
-var all_counter, iteration, love_heart_size, factor, grd, spacing;
+var all_counter
+var iteration;
+var love_heart_size;
+var factor;
+var grd;
+var spacing;
+var speed;
+var text;
+var mousex;
+var mousey;
+var clickLocations = [];
 
 function init(){
   all_counter = 0;
   love_heart_size = 20;
   spacing = love_heart_size * 5;
   num_accross = w / spacing;
+  speed = 1;
+  text = 'I love you Joelle, happy 9 months';
 
   grd = ctx.createLinearGradient(0,0,w,h);
-  grd.addColorStop(0,"#9999ff");
-  grd.addColorStop(0.5,"#ccccff");
-  grd.addColorStop(1,"#9999ff");
+  grd.addColorStop(0,"#ff99ff");
+  grd.addColorStop(0.5,"#ffccff");
+  grd.addColorStop(1,"#ff99ff");
 }
 init();
 
@@ -32,18 +44,25 @@ function render(){
   ctx.fillRect(0, 0, w, h);
 
   // draw the text
-  ctx.font = '700 ' + w / 30 + 'px Helvetica';
+  ctx.font = '700 ' + w / 30 + 'px \'Indie Flower\', Helvetica';
   ctx.fontWeight = 800;
   ctx.textAlign = 'center';
   ctx.fillStyle = 'white';
-  ctx.fillText('I LOVE YOU EMILY', w / 2, h / 2);
+  ctx.fillText(text.substr(0, Math.max(0, all_counter / 10 - 2)), w / 2, h / 2);
 
   // draw all the hearts
   for(var x = -1; x < num_accross + 2; x++){
     for(var y = -1; y < num_accross + 2; y++){
-      drawHeart(ctx, "rgba(255, 255, 255, 0.2)", x * spacing + iteration, y * spacing, love_heart_size, all_counter * 2, 0);
+      drawHeart(ctx, "rgba(255, 255, 255, 0.2)", x * spacing + iteration * speed, y * spacing + iteration * speed, love_heart_size, 0, 0);
     }
   }
+
+  for (var x = 0; x < clickLocations.length; x++) {
+    drawHeart(ctx, "rgba(255, 0, 0, 0.7)", clickLocations[x].x, clickLocations[x].y, love_heart_size * 2, 0, 0);
+  }
+
+  // draw a heart on the cursor
+  drawHeart(ctx, "rgba(255, 0, 0, 0.5)", mousex, mousey, love_heart_size * 2, 0, 0);
 }
 
 
@@ -75,6 +94,16 @@ $(window).resize(function() {
   init();
 });
 
+// on mousemove
+$(document).mousemove(function(e){
+  mousex = e.pageX;
+  mousey = e.pageY;
+});
+
+// onclick
+$(document).click(function(e){
+  clickLocations.push({x: e.pageX, y: e.pageY});
+});
 
 // util functions
 
