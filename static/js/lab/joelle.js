@@ -44,7 +44,7 @@ function render(){
   ctx.fillRect(0, 0, w, h);
 
   // draw the text
-  ctx.font = '700 ' + w / 30 + 'px \'Indie Flower\', Helvetica';
+  ctx.font = '700 ' + w / 20 + 'px \'Indie Flower\', Helvetica';
   ctx.fontWeight = 800;
   ctx.textAlign = 'center';
   ctx.fillStyle = 'white';
