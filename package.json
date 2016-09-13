@@ -5,10 +5,12 @@
   "author": {
     "name": "Ben Kaiser",
     "email": "benjaminjkaiser@gmail.com",
-    "url":  "http://kaiserapps.com"
+    "url": "http://kaiserapps.com"
   },
   "homepage": "http://www.kaiserapps.com",
   "dependencies": {
+    "coffee-script": "^1.10.0",
+    "connect": "^3.5.0",
     "express.io": "1.x",
     "swig": "*"
   },
