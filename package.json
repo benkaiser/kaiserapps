@@ -17,6 +17,7 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "start": "nodemon -e 'html css js' server.js"
+    "start": "node server.js",
+    "nodemon": "nodemon -e 'html css js' server.js"
   }
 }
