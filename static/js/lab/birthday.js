@@ -18,11 +18,26 @@ function updatelink(){
 }
 
 // fireworks animation
-var canvas=document.getElementById('canvas');
-var ctx=canvas.getContext('2d');
+function setupCanvas(canvas) {
+  // Get the device pixel ratio, falling back to 1.
+  var dpr = window.devicePixelRatio || 1;
+  // Get the size of the canvas in CSS pixels.
+  var rect = document.body.getBoundingClientRect();
+  // Give the canvas pixel dimensions of their CSS
+  // size * the device pixel ratio.
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  var ctx = canvas.getContext('2d');
+  // Scale all drawing operations by the dpr, so you
+  // don't have to worry about the difference.
+  ctx.scale(dpr, dpr);
+  return ctx;
+}
 
-w = $(window).width();;
-h = $(window).height();;
+var canvas=document.getElementById('canvas');
+var ctx=setupCanvas(canvas);
+w = canvas.width;
+h = canvas.height;
 
 canvas.width = w;
 canvas.height = h;
@@ -36,8 +51,6 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)){
 }
 
 // adjust to center bday message
-bdheight = $("#bday").height();
-$("#bday").css("margin-top","-"+(bdheight/2)+"px");
 $("#bday").css("display","block");
 
 // used to stop fireworks firing when tab not active
@@ -138,9 +151,7 @@ function getGravity(time){
 var time = 0;
 function main() {
   update();
-  if(time++ % 2 === 0){
-    render();
-  }
+  render();
 };
 
 // instead of setInterval(main, 16), is more effiecient for animating
@@ -160,17 +171,41 @@ window.requestAnimFrame = (function(){
 })();
 
 $(window).resize(function() {
-  w = $(window).width();
-  h = $(window).height();
-  canvas.height = h;
-  canvas.width = w;
-  bdheight = $("#bday").height();
-  $("#bday").css("margin-top","-"+(bdheight/2)+"px");
+  ctx = setupCanvas(canvas);
+  w = canvas.width;
+  h = canvas.height;
 });
 
-$(document).click(function(e){
-    startFirework(e.pageX, e.pageY);
+let lastX = 0;
+let lastY = 0;
+let lastInterval;
+const FIREWORK_INTERVAL_DELAY = 100;
+function fireworkInterval() {
+  startFirework(lastX, lastY);
+}
+
+function touchStart(e) {
+  lastX = e.pageX;
+  lastY = e.pageY;
+  fireworkInterval();
+  lastInterval = setInterval(fireworkInterval, FIREWORK_INTERVAL_DELAY);
+}
+function touchMove(e) {
+  lastX = e.pageX;
+  lastY = e.pageY;
+}
+function touchEnd() {
+  clearInterval(lastInterval);
+}
+
+document.body.addEventListener('mousedown', touchStart);
+document.body.addEventListener('touchstart', touchStart);
+document.body.addEventListener('mousemove', touchMove);
+document.body.addEventListener('touchmove', (e) => {
+  touchMove(e.changedTouches[0])
 });
+document.body.addEventListener('mouseup', touchEnd);
+document.body.addEventListener('touchend', touchEnd);
 
 $(document).ready(function(e){
   urlVars = getUrlVars();

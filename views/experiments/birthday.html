@@ -12,15 +12,22 @@ html, body, #canvas{
   cursor: crosshair;
   overflow: hidden !important;
 }
+#bdayContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 #bday{
-  font-size: 80px;
-  font-familt: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  position: absolute;
+  font-size: 10vh;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
   width: 80%;
-  margin-left: 10%;
-  top:50%;
-  left: 0;
   color: #4bf;
   text-shadow:
 
@@ -37,8 +44,6 @@ html, body, #canvas{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
-  margin-top: -100px !important;
 }
 </style>
 {% endblock %}
@@ -46,7 +51,9 @@ html, body, #canvas{
 {% block content %}
 <div id="birthdayItem">
   <canvas id="canvas"></canvas>
-  <h1 id='bday'></h1>
+  <div id='bdayContainer'>
+    <h1 id='bday'></h1>
+  </div>
 </div>
 <div id="formItem">
   <form method="GET" action='birthday'>
