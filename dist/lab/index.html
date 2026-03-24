@@ -5,136 +5,197 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Lab — Kaiserapps</title>
   <meta name="description" content="Interactive canvas experiments — games, animations, and visualizers built with HTML5 Canvas and WebGL.">
-  <link rel="icon" type="image/png" href="/static/img/favicon.png">
+  <link rel="icon" type="image/png" href="../static/img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="/js/theme-toggle.js"></script>
+  <script src="../js/theme-toggle.js"></script>
   <style>
     .lab-hero {
       padding-top: calc(var(--nav-height) + var(--space-2xl));
       padding-bottom: var(--space-xl);
       text-align: center;
-      position: relative;
-      overflow: hidden;
-      min-height: 280px;
-    }
-
-    .lab-hero canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
-
-    .lab-hero .container {
-      position: relative;
-      z-index: 1;
     }
 
     .lab-intro {
       max-width: 600px;
-      margin: 0 auto var(--space-xl) auto;
+      margin: 0 auto;
       font-size: 1rem;
       color: var(--text-secondary);
     }
 
-    .experiment-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    /* --- Always-split layout --- */
+    .lab-split {
+      display: flex;
       gap: var(--space-lg);
+      min-height: 70vh;
     }
 
+    .lab-list {
+      width: 380px;
+      min-width: 380px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      overflow-y: auto;
+      max-height: calc(100vh - 100px);
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-md));
+      padding-right: var(--space-xs);
+    }
+
+    /* Thin scrollbar for the list */
+    .lab-list::-webkit-scrollbar { width: 4px; }
+    .lab-list::-webkit-scrollbar-track { background: transparent; }
+    .lab-list::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+
+    .lab-preview {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .lab-preview-placeholder {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      min-height: 500px;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .lab-preview-content {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .lab-preview-content.active {
+      display: flex;
+    }
+
+    .lab-preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: var(--space-sm);
+    }
+
+    .lab-preview-header h2 {
+      font-size: 1.2rem;
+      margin: 0;
+    }
+
+    .lab-preview-header a {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .lab-preview-content iframe {
+      flex: 1;
+      width: 100%;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: #000;
+      min-height: 500px;
+    }
+
+    /* --- Experiment cards --- */
     .experiment-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       overflow: hidden;
-      transition: all var(--transition-normal);
+      cursor: pointer;
+      transition: all var(--transition-fast);
     }
 
     .experiment-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
+      background: var(--bg-card-hover);
+    }
+
+    .experiment-card.active {
+      border-color: var(--ka-purple);
+      background: var(--bg-card-hover);
+    }
+
+    [data-theme="dark"] .experiment-card.active {
+      border-color: var(--ka-cyan);
     }
 
     .experiment-card img {
       width: 100%;
-      aspect-ratio: 16/9;
+      aspect-ratio: 4/3;
       object-fit: cover;
       border-bottom: 1px solid var(--border-color);
     }
 
-    .experiment-card iframe {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border: none;
-      border-bottom: 1px solid var(--border-color);
-    }
-
     .experiment-card-body {
-      padding: var(--space-md) var(--space-lg);
+      padding: var(--space-sm) var(--space-md) var(--space-md);
     }
 
     .experiment-card-body h3 {
-      margin-bottom: var(--space-xs);
-      font-size: 1.1rem;
+      font-size: 0.95rem;
+      margin: 0 0 var(--space-xs) 0;
     }
 
     .experiment-card-body p {
-      font-size: 0.85rem;
-      margin-bottom: var(--space-sm);
-    }
-
-    .experiment-actions {
-      display: flex;
-      gap: var(--space-md);
-    }
-
-    .experiment-actions a,
-    .experiment-actions button {
       font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--ka-purple);
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 0;
-      text-decoration: none;
+      margin: 0;
+      color: var(--text-muted);
+      line-height: 1.4;
     }
 
-    [data-theme="dark"] .experiment-actions a,
-    [data-theme="dark"] .experiment-actions button {
-      color: var(--ka-cyan);
-    }
+    /* --- Mobile: stack vertically --- */
+    @media (max-width: 900px) {
+      .lab-split {
+        flex-direction: column;
+      }
 
-    .experiment-actions a:hover,
-    .experiment-actions button:hover {
-      color: var(--ka-pink);
-    }
+      .lab-list {
+        width: 100%;
+        min-width: unset;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: visible;
+        max-height: none;
+        position: static;
+        padding-bottom: var(--space-sm);
+      }
 
-    @media (max-width: 768px) {
-      .experiment-grid {
-        grid-template-columns: 1fr;
+      .lab-list .experiment-card {
+        min-width: 220px;
+        flex-shrink: 0;
+      }
+
+      .lab-preview-placeholder {
+        min-height: 300px;
+      }
+
+      .lab-preview-content iframe {
+        min-height: 300px;
       }
     }
   </style>
-  <link rel="stylesheet" crossorigin href="/assets/main-5VrVpox4.css">
+  <link rel="stylesheet" crossorigin href="../assets/main-5VrVpox4.css">
 </head>
 <body>
   <!-- Navigation -->
   <nav class="nav">
     <div class="container">
-      <a href="/" class="nav-brand">Kaiserapps</a>
+      <a href="../" class="nav-brand">Kaiserapps</a>
       <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
       <ul class="nav-links">
-        <li><a href="/about.html">About</a></li>
-        <li><a href="/projects.html">Projects</a></li>
-        <li><a href="/lab/">Lab</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="./">Lab</a></li>
         <li><a href="https://benkaiser.dev" target="_blank">Blog</a></li>
-        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="../contact.html">Contact</a></li>
         <li>
           <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
             <span class="icon-moon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
@@ -157,8 +218,22 @@
 
   <section class="section" style="padding-top: 0;">
     <div class="container">
-      <div class="experiment-grid" id="experiment-grid">
-        <!-- Populated by JS below -->
+      <div class="lab-split" id="lab-split">
+        <div class="lab-list" id="lab-list">
+          <!-- Populated by JS -->
+        </div>
+        <div class="lab-preview">
+          <div class="lab-preview-placeholder" id="lab-placeholder">
+            Select an experiment to preview
+          </div>
+          <div class="lab-preview-content" id="lab-preview-content">
+            <div class="lab-preview-header">
+              <h2 id="preview-title"></h2>
+              <a id="preview-link" href="#" target="_blank">Open in New Window →</a>
+            </div>
+            <iframe id="preview-iframe" src="about:blank"></iframe>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -177,59 +252,65 @@
 
   <script>
     const experiments = [
-      { name: "Cube Fly", desc: "Immersive 3D dodge game — you're the grey cube, dodge the approaching colored cubes.", img: "/static/img/lab/cubefly.png", slug: "cubefly", tryable: true },
-      { name: "Vis", desc: "Music visualizer using Chrome's Web Audio API.", img: "/static/img/lab/vis.png", slug: "vis", tryable: true },
-      { name: "Psy!", desc: "Interactive painting app — create drawings with large colored squares. Save and share your creations.", img: "/static/img/lab/psy.png", slug: "psy", tryable: true },
-      { name: "Wobble", desc: "A fun experiment with the quadraticCurveTo() canvas function.", img: "/static/img/lab/wobble.png", slug: "wobble", tryable: true },
-      { name: "Spider Wobble", desc: "Variant of Wobble with autonomous line spawning.", img: "/static/img/lab/spiderwobble.png", slug: "spiderwobble", tryable: true },
-      { name: "Nexus", desc: "Recreation of the Android Nexus live wallpaper in canvas.", img: "/static/img/lab/nexus.png", slug: "nexus", tryable: true },
-      { name: "Firework Birthday Card Creator", desc: "Dynamic birthday card maker with fireworks. Enter a name and age, get a shareable link.", img: "/static/img/lab/birthday.png", slug: "birthday", tryable: true },
-      { name: "Fader", desc: "Screen saver inspired by church lyric backgrounds. Co-developed with Eden Vicary.", img: "/static/img/lab/fader.png", slug: "fader", tryable: true },
-      { name: "Tunnel Fader", desc: "Modification of Fader to look like a tunnel.", img: "/static/img/lab/tunnelfader.png", slug: "tunnelfader", tryable: true },
-      { name: "Tunnel", desc: "A psychedelic tunnel animation.", img: "/static/img/lab/tunnel.png", slug: "tunnel", tryable: true },
-      { name: "Snafu!", desc: "Recreation of the classic arcade snake game. Two-player: P1 WASD, P2 arrow keys.", img: "/static/img/lab/snafu.png", slug: "snafu", tryable: true },
-      { name: "Underwater Bubbles", desc: "Simulated bubbles floating upward in water. Move the cursor to move the spawn point.", img: "/static/img/lab/underwaterbubbles.png", slug: "ub", tryable: true },
-      { name: "Dual Bubble Cannons", desc: "A nice screen saver — no interactivity.", img: "/static/img/lab/dbc.png", slug: "dbc", tryable: true },
-      { name: "Hearts", desc: "A remix of Underwater Bubbles using text hearts instead of circles.", img: "/static/img/lab/hearts.png", slug: "hearts", tryable: true },
-      { name: "Prime Nightmare", desc: "Shows prime numbers in sequence from the cursor. Made for my brother Josh.", img: "/static/img/lab/primenightmare.png", slug: "prime", tryable: true },
-      { name: "XTT", desc: "Custom message maker using canvas text drawing and CSS3 @font-face. eXtensive Text Transposer.", img: "/static/img/lab/xtt.png", slug: "xtt", tryable: true },
-      { name: "Mojo vs. Mine", desc: "First game I created on canvas. Two-player chase game. Mojo=arrows, Mine=WASD.", img: "/static/img/lab/mojo.png", slug: "mojo", tryable: false },
-      { name: "Ball in Box", desc: "Experimenting with a moving spawn point.", img: "/static/img/lab/bib.png", slug: "bib", tryable: true },
+      { name: "Cube Fly", desc: "Immersive 3D game where you are the grey cube and must dodge the ever-faster approaching colored cubes.", img: "../static/img/lab/cubefly.png", slug: "cubefly" },
+      { name: "Vis", desc: "Music visualiser in JavaScript using Chrome's audio API.", img: "../static/img/lab/vis.png", slug: "vis" },
+      { name: "Psy!", desc: "Interactive painting application that lets you create drawings made out of large squares. Save and share your creations.", img: "../static/img/lab/psy.png", slug: "psy" },
+      { name: "Wobble", desc: "A fun experiment getting used to the quadraticCurveTo() canvas function.", img: "../static/img/lab/wobble.png", slug: "wobble" },
+      { name: "Spider Wobble", desc: "Changing spawn point version of Wobble — creates lines autonomously.", img: "../static/img/lab/spiderwobble.png", slug: "spiderwobble" },
+      { name: "Nexus", desc: "Inspired by the standard Android live wallpaper, recreated in canvas with a Kaiserapps touch.", img: "../static/img/lab/nexus.png", slug: "nexus" },
+      { name: "Birthday Card Creator", desc: "Originally a custom birthday card for a friend, made dynamic so anyone can create and send one.", img: "../static/img/lab/birthday.png", slug: "birthday" },
+      { name: "Fader", desc: "A screen saver idea inspired by watching the animations behind lyrics at church. Co-developed with Eden Vicary.", img: "../static/img/lab/fader.png", slug: "fader" },
+      { name: "Tunnel Fader", desc: "Fader modification to look like a tunnel.", img: "../static/img/lab/tunnelfader.png", slug: "tunnelfader" },
+      { name: "Tunnel", desc: "A psychedelic tunnel animation.", img: "../static/img/lab/tunnel.png", slug: "tunnel" },
+      { name: "Snafu!", desc: "My attempt at recreating the classic arcade snake game. Two-player: P1 WASD, P2 arrow keys.", img: "../static/img/lab/snafu.png", slug: "snafu" },
+      { name: "Underwater Bubbles", desc: "Simulated bubbles floating up in water. Move the cursor to move the spawn point.", img: "../static/img/lab/underwaterbubbles.png", slug: "ub" },
+      { name: "Dual Bubble Cannons", desc: "A nice screen saver — no interactivity.", img: "../static/img/lab/dbc.png", slug: "dbc" },
+      { name: "Hearts", desc: "A remix of the Underwater Bubbles creation using text hearts instead of circles.", img: "../static/img/lab/hearts.png", slug: "hearts" },
+      { name: "Prime Nightmare", desc: "Shows prime numbers in sequence coming from the cursor. Made for my brother Josh.", img: "../static/img/lab/primenightmare.png", slug: "prime" },
+      { name: "XTT", desc: "Custom message maker using canvas text drawing and CSS3 @font-face. The eXtensive Text Transposer.", img: "../static/img/lab/xtt.png", slug: "xtt" },
+      { name: "Mojo vs. Mine", desc: "First game I created on canvas that got me interested. Two-player: Mojo=arrows, Mine=WASD.", img: "../static/img/lab/mojo.png", slug: "mojo" },
+      { name: "Ball in Box", desc: "Experimenting with a moving spawn point.", img: "../static/img/lab/bib.png", slug: "bib" },
     ];
 
-    const grid = document.getElementById('experiment-grid');
-    let activeIframe = null;
+    const list = document.getElementById('lab-list');
+    const placeholder = document.getElementById('lab-placeholder');
+    const previewContent = document.getElementById('lab-preview-content');
+    const previewIframe = document.getElementById('preview-iframe');
+    const previewTitle = document.getElementById('preview-title');
+    const previewLink = document.getElementById('preview-link');
 
     experiments.forEach((exp, i) => {
       const card = document.createElement('div');
       card.className = 'experiment-card';
       card.innerHTML = `
-        <div class="experiment-media">
-          <img src="${exp.img}" alt="${exp.name}" loading="lazy">
-        </div>
+        <img src="${exp.img}" alt="${exp.name}" loading="lazy">
         <div class="experiment-card-body">
           <h3>${exp.name}</h3>
           <p>${exp.desc}</p>
-          <div class="experiment-actions">
-            ${exp.tryable ? `<button onclick="tryExperiment(${i})">▶ Try Inline</button>` : ''}
-            <a href="/lab/${exp.slug}.html" target="_blank">Open in New Window →</a>
-          </div>
         </div>
       `;
-      grid.appendChild(card);
+      card.addEventListener('click', () => openExperiment(i));
+      list.appendChild(card);
     });
 
-    function tryExperiment(index) {
-      // Reset any active iframe
-      if (activeIframe !== null) {
-        const prevMedia = grid.children[activeIframe].querySelector('.experiment-media');
-        const exp = experiments[activeIframe];
-        prevMedia.innerHTML = `<img src="${exp.img}" alt="${exp.name}" loading="lazy">`;
-      }
-      // Set new iframe
-      const media = grid.children[index].querySelector('.experiment-media');
-      media.innerHTML = `<iframe src="/lab/${experiments[index].slug}.html" loading="lazy"></iframe>`;
-      activeIframe = index;
+    function openExperiment(index) {
+      const exp = experiments[index];
+
+      // Hide placeholder, show preview
+      placeholder.style.display = 'none';
+      previewContent.classList.add('active');
+
+      // Highlight active card
+      list.querySelectorAll('.experiment-card').forEach(c => c.classList.remove('active'));
+      list.children[index].classList.add('active');
+
+      // Load experiment
+      previewIframe.src = `./${exp.slug}.html`;
+      previewTitle.textContent = exp.name;
+      previewLink.href = `./${exp.slug}.html`;
+
+      // Scroll active card into view
+      list.children[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   </script>
 </body>

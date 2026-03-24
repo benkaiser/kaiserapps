@@ -25,48 +25,58 @@
       color: var(--text-secondary);
     }
 
-    /* --- Split layout --- */
+    /* --- Always-split layout --- */
     .lab-split {
       display: flex;
       gap: var(--space-lg);
       min-height: 70vh;
-      transition: all 0.35s ease;
     }
 
     .lab-list {
+      width: 380px;
+      min-width: 380px;
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
-      gap: var(--space-md);
-      flex-shrink: 0;
+      gap: var(--space-sm);
       overflow-y: auto;
       max-height: calc(100vh - 100px);
-      padding-right: var(--space-sm);
-      transition: width 0.35s ease;
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-md));
+      padding-right: var(--space-xs);
     }
 
-    /* Default: list takes full width as a grid */
-    .lab-split:not(.split-active) .lab-list {
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      max-height: none;
-      overflow: visible;
-    }
-
-    /* When split is active: list becomes narrow sidebar */
-    .lab-split.split-active .lab-list {
-      width: 340px;
-      min-width: 340px;
-    }
+    /* Thin scrollbar for the list */
+    .lab-list::-webkit-scrollbar { width: 4px; }
+    .lab-list::-webkit-scrollbar-track { background: transparent; }
+    .lab-list::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
 
     .lab-preview {
       flex: 1;
-      display: none;
+      display: flex;
       flex-direction: column;
       min-width: 0;
     }
 
-    .lab-split.split-active .lab-preview {
+    .lab-preview-placeholder {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      min-height: 500px;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .lab-preview-content {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .lab-preview-content.active {
       display: flex;
     }
 
@@ -74,32 +84,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: var(--space-md) 0;
+      padding-bottom: var(--space-sm);
     }
 
     .lab-preview-header h2 {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       margin: 0;
     }
 
-    .lab-preview-close {
-      background: none;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      color: var(--text-secondary);
-      cursor: pointer;
-      padding: 0.4rem 0.8rem;
-      font-size: 0.8rem;
+    .lab-preview-header a {
+      font-size: 0.85rem;
       font-weight: 600;
-      transition: all var(--transition-fast);
     }
 
-    .lab-preview-close:hover {
-      border-color: var(--ka-pink);
-      color: var(--ka-pink);
-    }
-
-    .lab-preview iframe {
+    .lab-preview-content iframe {
       flex: 1;
       width: 100%;
       border: 1px solid var(--border-color);
@@ -108,106 +106,80 @@
       min-height: 500px;
     }
 
-    .lab-preview-actions {
-      padding: var(--space-sm) 0;
-      display: flex;
-      gap: var(--space-md);
-    }
-
-    .lab-preview-actions a {
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
     /* --- Experiment cards --- */
     .experiment-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       overflow: hidden;
-      transition: all var(--transition-normal);
       cursor: pointer;
+      transition: all var(--transition-fast);
     }
 
     .experiment-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+      background: var(--bg-card-hover);
     }
 
     .experiment-card.active {
       border-color: var(--ka-purple);
-      box-shadow: 0 0 0 2px var(--ka-purple);
+      background: var(--bg-card-hover);
     }
 
     [data-theme="dark"] .experiment-card.active {
       border-color: var(--ka-cyan);
-      box-shadow: 0 0 0 2px var(--ka-cyan);
     }
 
     .experiment-card img {
       width: 100%;
-      aspect-ratio: 16/9;
+      aspect-ratio: 4/3;
       object-fit: cover;
       border-bottom: 1px solid var(--border-color);
     }
 
     .experiment-card-body {
-      padding: var(--space-sm) var(--space-md);
+      padding: var(--space-sm) var(--space-md) var(--space-md);
     }
 
     .experiment-card-body h3 {
-      font-size: 1rem;
-      margin-bottom: 2px;
+      font-size: 0.95rem;
+      margin: 0 0 var(--space-xs) 0;
     }
 
     .experiment-card-body p {
       font-size: 0.8rem;
-      margin-bottom: 0;
+      margin: 0;
       color: var(--text-muted);
+      line-height: 1.4;
     }
 
-    /* In split mode, hide descriptions and shrink cards */
-    .lab-split.split-active .experiment-card-body p {
-      display: none;
-    }
-
-    .lab-split.split-active .experiment-card img {
-      aspect-ratio: 2/1;
-    }
-
-    .lab-split.split-active .experiment-card:hover {
-      transform: none;
-    }
-
+    /* --- Mobile: stack vertically --- */
     @media (max-width: 900px) {
-      .lab-split.split-active {
+      .lab-split {
         flex-direction: column;
       }
 
-      .lab-split.split-active .lab-list {
+      .lab-list {
         width: 100%;
         min-width: unset;
         flex-direction: row;
         overflow-x: auto;
         overflow-y: visible;
         max-height: none;
-        gap: var(--space-sm);
+        position: static;
         padding-bottom: var(--space-sm);
       }
 
-      .lab-split.split-active .lab-list .experiment-card {
-        min-width: 200px;
+      .lab-list .experiment-card {
+        min-width: 220px;
         flex-shrink: 0;
       }
 
-      .lab-preview iframe {
+      .lab-preview-placeholder {
         min-height: 300px;
       }
-    }
 
-    @media (max-width: 768px) {
-      .lab-split:not(.split-active) .lab-list {
-        grid-template-columns: 1fr;
+      .lab-preview-content iframe {
+        min-height: 300px;
       }
     }
   </style>
@@ -231,14 +203,16 @@
         <div class="lab-list" id="lab-list">
           <!-- Populated by JS -->
         </div>
-        <div class="lab-preview" id="lab-preview">
-          <div class="lab-preview-header">
-            <h2 id="preview-title"></h2>
-            <button class="lab-preview-close" onclick="closePreview()">Close Preview</button>
+        <div class="lab-preview">
+          <div class="lab-preview-placeholder" id="lab-placeholder">
+            Select an experiment to preview
           </div>
-          <iframe id="preview-iframe" src="about:blank"></iframe>
-          <div class="lab-preview-actions">
-            <a id="preview-link" href="#" target="_blank">Open in New Window →</a>
+          <div class="lab-preview-content" id="lab-preview-content">
+            <div class="lab-preview-header">
+              <h2 id="preview-title"></h2>
+              <a id="preview-link" href="#" target="_blank">Open in New Window →</a>
+            </div>
+            <iframe id="preview-iframe" src="about:blank"></iframe>
           </div>
         </div>
       </div>
@@ -249,38 +223,36 @@
 
   <script>
     const experiments = [
-      { name: "Cube Fly", desc: "Immersive 3D dodge game — dodge the approaching colored cubes.", img: "../static/img/lab/cubefly.png", slug: "cubefly" },
-      { name: "Vis", desc: "Music visualizer using Chrome's Web Audio API.", img: "../static/img/lab/vis.png", slug: "vis" },
-      { name: "Psy!", desc: "Interactive painting app with large colored squares.", img: "../static/img/lab/psy.png", slug: "psy" },
-      { name: "Wobble", desc: "Fun with the quadraticCurveTo() canvas function.", img: "../static/img/lab/wobble.png", slug: "wobble" },
-      { name: "Spider Wobble", desc: "Autonomous line spawning variant of Wobble.", img: "../static/img/lab/spiderwobble.png", slug: "spiderwobble" },
-      { name: "Nexus", desc: "Recreation of the Android Nexus live wallpaper.", img: "../static/img/lab/nexus.png", slug: "nexus" },
-      { name: "Birthday Card Creator", desc: "Dynamic birthday card maker with fireworks.", img: "../static/img/lab/birthday.png", slug: "birthday" },
-      { name: "Fader", desc: "Screen saver inspired by church lyric backgrounds.", img: "../static/img/lab/fader.png", slug: "fader" },
-      { name: "Tunnel Fader", desc: "Fader modification that looks like a tunnel.", img: "../static/img/lab/tunnelfader.png", slug: "tunnelfader" },
+      { name: "Cube Fly", desc: "Immersive 3D game where you are the grey cube and must dodge the ever-faster approaching colored cubes.", img: "../static/img/lab/cubefly.png", slug: "cubefly" },
+      { name: "Vis", desc: "Music visualiser in JavaScript using Chrome's audio API.", img: "../static/img/lab/vis.png", slug: "vis" },
+      { name: "Psy!", desc: "Interactive painting application that lets you create drawings made out of large squares. Save and share your creations.", img: "../static/img/lab/psy.png", slug: "psy" },
+      { name: "Wobble", desc: "A fun experiment getting used to the quadraticCurveTo() canvas function.", img: "../static/img/lab/wobble.png", slug: "wobble" },
+      { name: "Spider Wobble", desc: "Changing spawn point version of Wobble — creates lines autonomously.", img: "../static/img/lab/spiderwobble.png", slug: "spiderwobble" },
+      { name: "Nexus", desc: "Inspired by the standard Android live wallpaper, recreated in canvas with a Kaiserapps touch.", img: "../static/img/lab/nexus.png", slug: "nexus" },
+      { name: "Birthday Card Creator", desc: "Originally a custom birthday card for a friend, made dynamic so anyone can create and send one.", img: "../static/img/lab/birthday.png", slug: "birthday" },
+      { name: "Fader", desc: "A screen saver idea inspired by watching the animations behind lyrics at church. Co-developed with Eden Vicary.", img: "../static/img/lab/fader.png", slug: "fader" },
+      { name: "Tunnel Fader", desc: "Fader modification to look like a tunnel.", img: "../static/img/lab/tunnelfader.png", slug: "tunnelfader" },
       { name: "Tunnel", desc: "A psychedelic tunnel animation.", img: "../static/img/lab/tunnel.png", slug: "tunnel" },
-      { name: "Snafu!", desc: "Classic snake game. P1: WASD, P2: arrow keys.", img: "../static/img/lab/snafu.png", slug: "snafu" },
-      { name: "Underwater Bubbles", desc: "Simulated bubbles floating upward in water.", img: "../static/img/lab/underwaterbubbles.png", slug: "ub" },
-      { name: "Dual Bubble Cannons", desc: "A screen saver with bubble cannons.", img: "../static/img/lab/dbc.png", slug: "dbc" },
-      { name: "Hearts", desc: "Underwater Bubbles remix using text hearts.", img: "../static/img/lab/hearts.png", slug: "hearts" },
-      { name: "Prime Nightmare", desc: "Prime numbers in sequence from the cursor.", img: "../static/img/lab/primenightmare.png", slug: "prime" },
-      { name: "XTT", desc: "Custom message maker with canvas text drawing.", img: "../static/img/lab/xtt.png", slug: "xtt" },
-      { name: "Mojo vs. Mine", desc: "Two-player chase game. Mojo=arrows, Mine=WASD.", img: "../static/img/lab/mojo.png", slug: "mojo" },
+      { name: "Snafu!", desc: "My attempt at recreating the classic arcade snake game. Two-player: P1 WASD, P2 arrow keys.", img: "../static/img/lab/snafu.png", slug: "snafu" },
+      { name: "Underwater Bubbles", desc: "Simulated bubbles floating up in water. Move the cursor to move the spawn point.", img: "../static/img/lab/underwaterbubbles.png", slug: "ub" },
+      { name: "Dual Bubble Cannons", desc: "A nice screen saver — no interactivity.", img: "../static/img/lab/dbc.png", slug: "dbc" },
+      { name: "Hearts", desc: "A remix of the Underwater Bubbles creation using text hearts instead of circles.", img: "../static/img/lab/hearts.png", slug: "hearts" },
+      { name: "Prime Nightmare", desc: "Shows prime numbers in sequence coming from the cursor. Made for my brother Josh.", img: "../static/img/lab/primenightmare.png", slug: "prime" },
+      { name: "XTT", desc: "Custom message maker using canvas text drawing and CSS3 @font-face. The eXtensive Text Transposer.", img: "../static/img/lab/xtt.png", slug: "xtt" },
+      { name: "Mojo vs. Mine", desc: "First game I created on canvas that got me interested. Two-player: Mojo=arrows, Mine=WASD.", img: "../static/img/lab/mojo.png", slug: "mojo" },
       { name: "Ball in Box", desc: "Experimenting with a moving spawn point.", img: "../static/img/lab/bib.png", slug: "bib" },
     ];
 
-    const split = document.getElementById('lab-split');
     const list = document.getElementById('lab-list');
-    const preview = document.getElementById('lab-preview');
+    const placeholder = document.getElementById('lab-placeholder');
+    const previewContent = document.getElementById('lab-preview-content');
     const previewIframe = document.getElementById('preview-iframe');
     const previewTitle = document.getElementById('preview-title');
     const previewLink = document.getElementById('preview-link');
-    let activeIndex = null;
 
     experiments.forEach((exp, i) => {
       const card = document.createElement('div');
       card.className = 'experiment-card';
-      card.setAttribute('data-index', i);
       card.innerHTML = `
         <img src="${exp.img}" alt="${exp.name}" loading="lazy">
         <div class="experiment-card-body">
@@ -295,8 +267,9 @@
     function openExperiment(index) {
       const exp = experiments[index];
 
-      // Activate split view
-      split.classList.add('split-active');
+      // Hide placeholder, show preview
+      placeholder.style.display = 'none';
+      previewContent.classList.add('active');
 
       // Highlight active card
       list.querySelectorAll('.experiment-card').forEach(c => c.classList.remove('active'));
@@ -307,17 +280,8 @@
       previewTitle.textContent = exp.name;
       previewLink.href = `./${exp.slug}.html`;
 
-      activeIndex = index;
-
-      // Scroll active card into view in the sidebar
+      // Scroll active card into view
       list.children[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    function closePreview() {
-      split.classList.remove('split-active');
-      previewIframe.src = 'about:blank';
-      list.querySelectorAll('.experiment-card').forEach(c => c.classList.remove('active'));
-      activeIndex = null;
     }
   </script>
 </body>
