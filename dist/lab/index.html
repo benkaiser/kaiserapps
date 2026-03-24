@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Lab — Kaiserapps</title>
+  <meta name="description" content="Interactive canvas experiments — games, animations, and visualizers built with HTML5 Canvas and WebGL.">
+  <link rel="icon" type="image/png" href="/static/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="/js/theme-toggle.js"></script>
+  <style>
+    .lab-hero {
+      padding-top: calc(var(--nav-height) + var(--space-2xl));
+      padding-bottom: var(--space-xl);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+    }
+
+    .lab-hero canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .lab-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .lab-intro {
+      max-width: 600px;
+      margin: 0 auto var(--space-xl) auto;
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .experiment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .experiment-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: all var(--transition-normal);
+    }
+
+    .experiment-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .experiment-card img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .experiment-card iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: none;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .experiment-card-body {
+      padding: var(--space-md) var(--space-lg);
+    }
+
+    .experiment-card-body h3 {
+      margin-bottom: var(--space-xs);
+      font-size: 1.1rem;
+    }
+
+    .experiment-card-body p {
+      font-size: 0.85rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .experiment-actions {
+      display: flex;
+      gap: var(--space-md);
+    }
+
+    .experiment-actions a,
+    .experiment-actions button {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ka-purple);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      text-decoration: none;
+    }
+
+    [data-theme="dark"] .experiment-actions a,
+    [data-theme="dark"] .experiment-actions button {
+      color: var(--ka-cyan);
+    }
+
+    .experiment-actions a:hover,
+    .experiment-actions button:hover {
+      color: var(--ka-pink);
+    }
+
+    @media (max-width: 768px) {
+      .experiment-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="stylesheet" crossorigin href="/assets/main-5VrVpox4.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <a href="/" class="nav-brand">Kaiserapps</a>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <ul class="nav-links">
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/projects.html">Projects</a></li>
+        <li><a href="/lab/">Lab</a></li>
+        <li><a href="https://benkaiser.dev" target="_blank">Blog</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li>
+          <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+            <span class="icon-moon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+            <span class="icon-sun"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="lab-hero" id="lab-hero">
+    <div class="container">
+      <h1><span class="text-gradient">The Lab</span></h1>
+      <p class="lab-intro">
+        A directory of fun experiments I created back in 2011. Most are a mixture of HTML5 Canvas and JavaScript
+        (with the occasional Three.js). Best experienced on desktop.
+      </p>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="experiment-grid" id="experiment-grid">
+        <!-- Populated by JS below -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <script>document.write(new Date().getFullYear())</script> Benjamin Kaiser — Kaiserapps</p>
+      <ul class="footer-links">
+        <li><a href="https://benkaiser.dev" target="_blank">Blog</a></li>
+        <li><a href="https://github.com/benkaiser" target="_blank">GitHub</a></li>
+        <li><a href="https://stackoverflow.com/users/1026478/benkaiser" target="_blank">Stack Overflow</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    const experiments = [
+      { name: "Cube Fly", desc: "Immersive 3D dodge game — you're the grey cube, dodge the approaching colored cubes.", img: "/static/img/lab/cubefly.png", slug: "cubefly", tryable: true },
+      { name: "Vis", desc: "Music visualizer using Chrome's Web Audio API.", img: "/static/img/lab/vis.png", slug: "vis", tryable: true },
+      { name: "Psy!", desc: "Interactive painting app — create drawings with large colored squares. Save and share your creations.", img: "/static/img/lab/psy.png", slug: "psy", tryable: true },
+      { name: "Wobble", desc: "A fun experiment with the quadraticCurveTo() canvas function.", img: "/static/img/lab/wobble.png", slug: "wobble", tryable: true },
+      { name: "Spider Wobble", desc: "Variant of Wobble with autonomous line spawning.", img: "/static/img/lab/spiderwobble.png", slug: "spiderwobble", tryable: true },
+      { name: "Nexus", desc: "Recreation of the Android Nexus live wallpaper in canvas.", img: "/static/img/lab/nexus.png", slug: "nexus", tryable: true },
+      { name: "Firework Birthday Card Creator", desc: "Dynamic birthday card maker with fireworks. Enter a name and age, get a shareable link.", img: "/static/img/lab/birthday.png", slug: "birthday", tryable: true },
+      { name: "Fader", desc: "Screen saver inspired by church lyric backgrounds. Co-developed with Eden Vicary.", img: "/static/img/lab/fader.png", slug: "fader", tryable: true },
+      { name: "Tunnel Fader", desc: "Modification of Fader to look like a tunnel.", img: "/static/img/lab/tunnelfader.png", slug: "tunnelfader", tryable: true },
+      { name: "Tunnel", desc: "A psychedelic tunnel animation.", img: "/static/img/lab/tunnel.png", slug: "tunnel", tryable: true },
+      { name: "Snafu!", desc: "Recreation of the classic arcade snake game. Two-player: P1 WASD, P2 arrow keys.", img: "/static/img/lab/snafu.png", slug: "snafu", tryable: true },
+      { name: "Underwater Bubbles", desc: "Simulated bubbles floating upward in water. Move the cursor to move the spawn point.", img: "/static/img/lab/underwaterbubbles.png", slug: "ub", tryable: true },
+      { name: "Dual Bubble Cannons", desc: "A nice screen saver — no interactivity.", img: "/static/img/lab/dbc.png", slug: "dbc", tryable: true },
+      { name: "Hearts", desc: "A remix of Underwater Bubbles using text hearts instead of circles.", img: "/static/img/lab/hearts.png", slug: "hearts", tryable: true },
+      { name: "Prime Nightmare", desc: "Shows prime numbers in sequence from the cursor. Made for my brother Josh.", img: "/static/img/lab/primenightmare.png", slug: "prime", tryable: true },
+      { name: "XTT", desc: "Custom message maker using canvas text drawing and CSS3 @font-face. eXtensive Text Transposer.", img: "/static/img/lab/xtt.png", slug: "xtt", tryable: true },
+      { name: "Mojo vs. Mine", desc: "First game I created on canvas. Two-player chase game. Mojo=arrows, Mine=WASD.", img: "/static/img/lab/mojo.png", slug: "mojo", tryable: false },
+      { name: "Ball in Box", desc: "Experimenting with a moving spawn point.", img: "/static/img/lab/bib.png", slug: "bib", tryable: true },
+    ];
+
+    const grid = document.getElementById('experiment-grid');
+    let activeIframe = null;
+
+    experiments.forEach((exp, i) => {
+      const card = document.createElement('div');
+      card.className = 'experiment-card';
+      card.innerHTML = `
+        <div class="experiment-media">
+          <img src="${exp.img}" alt="${exp.name}" loading="lazy">
+        </div>
+        <div class="experiment-card-body">
+          <h3>${exp.name}</h3>
+          <p>${exp.desc}</p>
+          <div class="experiment-actions">
+            ${exp.tryable ? `<button onclick="tryExperiment(${i})">▶ Try Inline</button>` : ''}
+            <a href="/lab/${exp.slug}.html" target="_blank">Open in New Window →</a>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    function tryExperiment(index) {
+      // Reset any active iframe
+      if (activeIframe !== null) {
+        const prevMedia = grid.children[activeIframe].querySelector('.experiment-media');
+        const exp = experiments[activeIframe];
+        prevMedia.innerHTML = `<img src="${exp.img}" alt="${exp.name}" loading="lazy">`;
+      }
+      // Set new iframe
+      const media = grid.children[index].querySelector('.experiment-media');
+      media.innerHTML = `<iframe src="/lab/${experiments[index].slug}.html" loading="lazy"></iframe>`;
+      activeIframe = index;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaiserapps — Benjamin Kaiser</title>
+  <meta name="description" content="Software engineer building web, mobile, and AI-powered applications. Principal SWE at Microsoft.">
+  <meta property="og:title" content="Kaiserapps — Benjamin Kaiser">
+  <meta property="og:description" content="Software engineer building web, mobile, and AI-powered applications.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="/static/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="/js/theme-toggle.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-5VrVpox4.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <a href="/" class="nav-brand">Kaiserapps</a>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <ul class="nav-links">
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/projects.html">Projects</a></li>
+        <li><a href="/lab/">Lab</a></li>
+        <li><a href="https://benkaiser.dev" target="_blank">Blog</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li>
+          <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+            <span class="icon-moon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+            <span class="icon-sun"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero-bg">
+    <div class="container hero-content">
+      <p class="subtitle">Hi, I'm</p>
+      <h1><span class="text-gradient">Benjamin Kaiser</span></h1>
+      <p class="description">
+        Principal Software Engineer at <strong>Microsoft</strong>, building things on the web since 2011.
+        Passionate about open source, AI-powered tools, and making technology accessible.
+      </p>
+      <div class="hero-actions">
+        <a href="/projects.html" class="btn btn-primary">View Projects →</a>
+        <a href="/about.html" class="btn btn-secondary">About Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Work</h2>
+        <p>A selection of projects I've built — from open-source music players to AI-first applications.</p>
+      </div>
+      <div class="card-grid">
+
+        <a href="/projects.html#kids-video" class="card" style="text-decoration:none; color:inherit;">
+          <div class="card-icon" style="background: linear-gradient(135deg, #21E6ED22, #6C28FF22);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <h3>Easy Kids Video Player</h3>
+          <p>Offline video player for children — parent-curated content, no tracking, no algorithms, no internet needed.</p>
+          <div class="card-tags">
+            <span class="tag">Mobile App</span>
+            <span class="tag">iOS</span>
+            <span class="tag">Android</span>
+          </div>
+        </a>
+
+        <a href="/projects.html#joey-mcp" class="card" style="text-decoration:none; color:inherit;">
+          <div class="card-icon" style="background: linear-gradient(135deg, #29E8AE22, #21E6ED22);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg></div>
+          <h3>Joey MCP Client</h3>
+          <p>Cross-platform chat app built in Flutter that connects to remote MCP servers via OpenRouter. Open source.</p>
+          <div class="card-tags">
+            <span class="tag">Mobile App</span>
+            <span class="tag">AI / MCP</span>
+          </div>
+        </a>
+
+        <a href="/projects.html#australian-spelling" class="card" style="text-decoration:none; color:inherit;">
+          <div class="card-icon" style="background: linear-gradient(135deg, #EF2B6F22, #29E8AE22);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div>
+          <h3>Australian Spelling</h3>
+          <p>Educational spelling app for Australian students with curated word lists and interactive practice.</p>
+          <div class="card-tags">
+            <span class="tag">Mobile App</span>
+            <span class="tag">Education</span>
+          </div>
+        </a>
+
+        <a href="/projects.html#stretto" class="card" style="text-decoration:none; color:inherit;">
+          <div class="card-icon" style="background: linear-gradient(135deg, #EF2B6F22, #6C28FF22);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+          <h3>Stretto</h3>
+          <p>Open-source web music player aggregating YouTube, SoundCloud, and Audius. PWA with offline playback, Spotify import, and casting.</p>
+          <div class="card-tags">
+            <span class="tag">Web App</span>
+            <span class="tag">PWA</span>
+            <span class="tag">635 stars</span>
+          </div>
+        </a>
+
+        <a href="/projects.html#sms-llm" class="card" style="text-decoration:none; color:inherit;">
+          <div class="card-icon" style="background: linear-gradient(135deg, #EF2B6F22, #21E6ED22);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
+          <h3>Text an LLM</h3>
+          <p>SMS-based LLM access running on an old Android phone with Termux. Built during a cyclone power outage.</p>
+          <div class="card-tags">
+            <span class="tag">AI</span>
+            <span class="tag">Hardware Hack</span>
+          </div>
+        </a>
+
+        <a href="https://aibibleplan.org/" class="card" style="text-decoration:none; color:inherit;" target="_blank">
+          <div class="card-icon" style="background: linear-gradient(135deg, #6C28FF22, #21E6ED22);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <h3>AI Bible Plan Generator</h3>
+          <p>AI-powered tool that generates personalized Bible reading plans based on topics, themes, or life situations.</p>
+          <div class="card-tags">
+            <span class="tag">AI</span>
+            <span class="tag">Web App</span>
+          </div>
+        </a>
+
+      </div>
+      <div style="text-align:center; margin-top: var(--space-xl);">
+        <a href="/projects.html" class="btn btn-secondary">View All Projects →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Bio -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: center;">
+      <div>
+        <h2>About Me</h2>
+        <p style="margin-bottom: var(--space-md);">
+          I'm a Gold Coast, Australia–based software engineer at Microsoft on the SharePoint team.
+          I completed my Master's in Software Engineering by age 20 and was a Google Code-in 2013 Grand Prize Winner.
+        </p>
+        <p style="margin-bottom: var(--space-lg);">
+          Outside work, I'm a prolific open-source builder with 180+ repos, specializing in AI/MCP tooling,
+          Flutter/Dart apps, and web applications. I'm passionate about open source, making AI accessible, and my faith.
+        </p>
+        <a href="/about.html" class="btn btn-primary">Learn More →</a>
+      </div>
+      <div>
+        <div class="tech-grid">
+          <span class="tech-badge">Web & Mobile Apps</span>
+          <span class="tech-badge">AI / MCP Tooling</span>
+          <span class="tech-badge">Distributed Systems</span>
+          <span class="tech-badge">Open Source</span>
+          <span class="tech-badge">Developer Tools</span>
+          <span class="tech-badge">Progressive Web Apps</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lab Teaser -->
+  <section class="section">
+    <div class="container" style="text-align: center;">
+      <h2>The Lab</h2>
+      <p style="margin: 0 auto var(--space-lg) auto;">
+        A collection of creative canvas experiments from my early days of web development — games,
+        visualizers, animations, and more. All built with HTML5 Canvas and JavaScript.
+      </p>
+      <a href="/lab/" class="btn btn-primary">Explore the Lab →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <script>document.write(new Date().getFullYear())</script> Benjamin Kaiser — Kaiserapps</p>
+      <ul class="footer-links">
+        <li><a href="https://benkaiser.dev" target="_blank">Blog</a></li>
+        <li><a href="https://github.com/benkaiser" target="_blank">GitHub</a></li>
+        <li><a href="https://stackoverflow.com/users/1026478/benkaiser" target="_blank">Stack Overflow</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="/js/backgrid.js"></script>
+  <script>
+    const bg = new Backgrid('hero-bg', {
+      exclusionEl: '.hero-content',
+      exclusionPadding: 24,
+    });
+    bg.start();
+    setTimeout(() => bg.glide(), 800);
+  </script>
+</body>
+</html>

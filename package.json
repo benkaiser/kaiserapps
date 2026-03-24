@@ -2,11 +2,7 @@
   "name": "kaiserapps-server",
   "version": "0.0.1",
   "description": "Kaiserapps Server",
-  "author": {
-    "name": "Ben Kaiser",
-    "email": "benjaminjkaiser@gmail.com",
-    "url": "http://kaiserapps.com"
-  },
+  "author": "Ben Kaiser <benjaminjkaiser@gmail.com> (http://kaiserapps.com)",
   "homepage": "http://www.kaiserapps.com",
   "dependencies": {
     "coffee-script": "^1.10.0",
@@ -14,12 +10,19 @@
     "express.io": "1.x",
     "swig": "*"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "vite": "^8.0.2",
+    "vite-plugin-handlebars": "^2.0.0"
+  },
   "bundleDependencies": [],
   "private": true,
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "nodemon": "nodemon -e 'html css js' server.js"
-  }
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start:legacy": "node server.js"
+  },
+  "keywords": [],
+  "license": "ISC"
 }
