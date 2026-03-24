@@ -38,11 +38,7 @@
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
-      gap: var(--space-sm);
-      overflow-y: auto;
-      max-height: calc(100vh - 100px);
-      position: sticky;
-      top: calc(var(--nav-height) + var(--space-md));
+      gap: var(--space-md);
       padding-right: var(--space-xs);
     }
 
@@ -56,6 +52,10 @@
       display: flex;
       flex-direction: column;
       min-width: 0;
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-md));
+      height: calc(100vh - var(--nav-height) - var(--space-xl));
+      align-self: flex-start;
     }
 
     .lab-preview-placeholder {
@@ -131,7 +131,7 @@
 
     .experiment-card img {
       width: 100%;
-      aspect-ratio: 4/3;
+      aspect-ratio: 2/1;
       object-fit: cover;
       border-bottom: 1px solid var(--border-color);
     }
@@ -152,7 +152,7 @@
       line-height: 1.4;
     }
 
-    /* --- Mobile: stack vertically --- */
+    /* --- Mobile: no preview, just a list that links out --- */
     @media (max-width: 900px) {
       .lab-split {
         flex-direction: column;
@@ -161,25 +161,10 @@
       .lab-list {
         width: 100%;
         min-width: unset;
-        flex-direction: row;
-        overflow-x: auto;
-        overflow-y: visible;
-        max-height: none;
-        position: static;
-        padding-bottom: var(--space-sm);
       }
 
-      .lab-list .experiment-card {
-        min-width: 220px;
-        flex-shrink: 0;
-      }
-
-      .lab-preview-placeholder {
-        min-height: 300px;
-      }
-
-      .lab-preview-content iframe {
-        min-height: 300px;
+      .lab-preview {
+        display: none !important;
       }
     }
   </style>
@@ -240,7 +225,7 @@
       { name: "Prime Nightmare", desc: "Shows prime numbers in sequence coming from the cursor. Made for my brother Josh.", img: "../static/img/lab/primenightmare.png", slug: "prime" },
       { name: "XTT", desc: "Custom message maker using canvas text drawing and CSS3 @font-face. The eXtensive Text Transposer.", img: "../static/img/lab/xtt.png", slug: "xtt" },
       { name: "Mojo vs. Mine", desc: "First game I created on canvas that got me interested. Two-player: Mojo=arrows, Mine=WASD.", img: "../static/img/lab/mojo.png", slug: "mojo" },
-      { name: "Ball in Box", desc: "Experimenting with a moving spawn point.", img: "../static/img/lab/bib.png", slug: "bib" },
+      { name: "Ball in Box", desc: "A bouncing spawn point — like the DVD logo — leaving a trail of colorful particles.", img: "../static/img/lab/bib.png", slug: "bib" },
     ];
 
     const list = document.getElementById('lab-list');
@@ -264,8 +249,17 @@
       list.appendChild(card);
     });
 
+    function isMobile() {
+      return window.innerWidth <= 900;
+    }
+
     function openExperiment(index) {
       const exp = experiments[index];
+
+      if (isMobile()) {
+        window.open(`./${exp.slug}.html`, '_blank');
+        return;
+      }
 
       // Hide placeholder, show preview
       placeholder.style.display = 'none';
