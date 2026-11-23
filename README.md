@@ -13,6 +13,9 @@ The same script generates the site share card and fallback PNG favicon from
 `public/static/img/kaiserapps-frost.svg`. Set
 `SHARE_CARD_FONT` and `SHARE_CARD_BOLD_FONT` to use other installed fonts.
 
+The Frost icon and standalone Sprint wordmark are available as SVG and
+high-resolution PNG files in `public/static/img/`.
+
 Production runs on the `kaiserapps` Dokku app at `benkaiser.dev`. Push changes
 to its `master` branch to deploy:
 
