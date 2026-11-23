@@ -25,7 +25,7 @@
         <img class="product-hero-icon" src="./product-media/{{product.slug}}/icon.webp" alt="" width="88" height="88">
         <h1>{{product.name}}</h1>
         <p class="product-headline">{{product.headline}}</p>
-        <p class="product-description">{{product.pitch}}</p>
+        <p class="product-description">{{#if product.description}}{{product.description}}{{else}}{{product.pitch}}{{/if}}</p>
         <div class="product-actions" aria-label="Get {{product.name}}">
           {{#each product.links}}
             <a class="product-action{{#if @first}} product-action-primary{{/if}}" href="{{url}}">{{label}} <span aria-hidden="true">↗</span></a>
@@ -33,10 +33,13 @@
         </div>
         {{#if product.availability}}<p class="product-availability">{{product.availability}}</p>{{/if}}
       </div>
-      <div class="product-stage {{product.layout}}">
-        {{#with product.hero}}
-          <img src="./product-media/{{../product.slug}}/hero.webp" alt="{{alt}}" width="{{width}}" height="{{height}}" fetchpriority="high">
-        {{/with}}
+      <div class="product-stage {{product.layout}}{{#if product.hero.[1]}} screen-spread{{/if}}">
+        {{#each product.hero}}
+          <figure>
+            <img src="./product-media/{{../product.slug}}/{{file}}.webp" alt="{{alt}}" width="{{width}}" height="{{height}}"{{#if @first}} fetchpriority="high"{{/if}}>
+            {{#if caption}}<figcaption>{{caption}}</figcaption>{{/if}}
+          </figure>
+        {{/each}}
       </div>
     </section>
     <section class="product-features container" aria-labelledby="product-features">
@@ -52,6 +55,26 @@
         {{/each}}
       </ul>
     </section>
+    {{#with product.details}}
+      <section class="product-details container" aria-labelledby="product-details">
+        <h2 id="product-details">{{heading}}</h2>
+        <div class="product-details-grid">
+          {{#each sections}}
+            <div class="product-detail">
+              <h3>{{title}}</h3>
+              <p>{{text}}</p>
+              {{#if items}}
+                <ul>
+                  {{#each items}}<li>{{this}}</li>{{/each}}
+                </ul>
+              {{/if}}
+              {{#if note}}<p>{{note}}</p>{{/if}}
+            </div>
+          {{/each}}
+        </div>
+        {{#if note}}<p class="product-details-note">{{note}}</p>{{/if}}
+      </section>
+    {{/with}}
     {{#if product.gallery}}
       <section class="product-gallery container" aria-labelledby="product-gallery">
         <h2 id="product-gallery">A closer look</h2>

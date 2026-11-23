@@ -32,13 +32,7 @@
     </header>
     {{#each productGroups}}
       <section class="catalog-group" aria-labelledby="{{id}}">
-        <header class="catalog-group-heading">
-          <span aria-hidden="true">{{number}}</span>
-          <div>
-            <h2 id="{{id}}">{{name}}</h2>
-            <p>{{intro}}</p>
-          </div>
-        </header>
+        <h2 class="catalog-group-heading" id="{{id}}">{{name}}</h2>
         <ul class="catalog-grid">
           {{#each items}}
             <li>
