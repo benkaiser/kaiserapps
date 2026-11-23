@@ -341,5 +341,10 @@ export const productGroups = [
 ];
 
 export const products = productGroups.flatMap(({ name, items }) =>
-  items.map((item) => ({ ...item, category: name })),
+  items.map((item) => ({
+    ...item,
+    category: name,
+    canonicalUrl: `https://kaiserapps.com/${item.slug}`,
+    shareImage: `https://kaiserapps.com/product-media/${item.slug}/share.jpg`,
+  })),
 );
