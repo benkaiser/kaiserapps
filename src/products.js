@@ -1,10 +1,14 @@
 const play = (id) => ({
   label: 'Google Play',
+  store: 'google-play',
+  caption: 'Get it on',
   url: `https://play.google.com/store/apps/details?id=${id}&hl=en_AU`,
 });
 
 const apple = (listing) => ({
   label: 'App Store',
+  store: 'app-store',
+  caption: 'Download on the',
   url: `https://apps.apple.com/au/app/${listing}`,
 });
 

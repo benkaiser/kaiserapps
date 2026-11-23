@@ -28,7 +28,14 @@
         <p class="product-description">{{#if product.description}}{{product.description}}{{else}}{{product.pitch}}{{/if}}</p>
         <div class="product-actions" aria-label="Get {{product.name}}">
           {{#each product.links}}
-            <a class="product-action{{#if @first}} product-action-primary{{/if}}" href="{{url}}">{{label}} <span aria-hidden="true">↗</span></a>
+            <a class="product-action{{#if store}} product-action-store{{else}}{{#if @first}} product-action-primary{{/if}}{{/if}}" href="{{url}}">
+              {{#if store}}
+                <img src="./store-icons/{{store}}.svg" width="25" height="25" alt="">
+                <span class="product-store-label"><small>{{caption}}</small>{{label}}</span>
+              {{else}}
+                {{label}} <span aria-hidden="true">↗</span>
+              {{/if}}
+            </a>
           {{/each}}
         </div>
         {{#if product.availability}}<p class="product-availability">{{product.availability}}</p>{{/if}}
