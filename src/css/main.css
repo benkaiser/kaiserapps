@@ -185,11 +185,16 @@ p {
 }
 
 .nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
   font-size: 1.3rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--text-primary) !important;
 }
+
+.nav-brand img { flex: none; }
 
 .nav-links {
   display: flex;

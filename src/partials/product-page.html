@@ -21,14 +21,14 @@
   <meta name="twitter:image" content="{{product.shareImage}}">
   <meta name="twitter:image:alt" content="Preview of {{product.name}} by Kaiserapps">
   <link rel="canonical" href="{{product.canonicalUrl}}">
-  <link rel="icon" type="image/webp" href="./product-media/{{product.slug}}/icon.webp">
+  <link rel="icon" type="image/png" href="./static/img/favicon.png">
   <script src="./js/theme-toggle.js"></script>
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/products.css">
 </head>
 <body class="product-page {{product.theme}}">
   <header class="product-top container">
-    <a class="product-home" href="./"><span aria-hidden="true">←</span> Kaiserapps</a>
+    {{> product-home}}
   </header>
   <main>
     <section class="product-hero container">
@@ -108,7 +108,7 @@
     {{/if}}
   </main>
   <footer class="product-footer container">
-    <a class="product-home" href="./"><span aria-hidden="true">←</span> Kaiserapps</a>
+    {{> product-home}}
   </footer>
 </body>
 </html>
