@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{product.name}} — Kaiserapps</title>
+  <meta name="description" content="{{product.pitch}}">
+  <meta property="og:title" content="{{product.name}} — Kaiserapps">
+  <meta property="og:description" content="{{product.pitch}}">
+  <meta property="og:image" content="https://kaiserapps.com/product-media/{{product.slug}}/icon.webp">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://kaiserapps.com/{{product.slug}}">
+  <link rel="icon" type="image/webp" href="./product-media/{{product.slug}}/icon.webp">
+  <script src="./js/theme-toggle.js"></script>
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/products.css">
+</head>
+<body class="product-page {{product.theme}}">
+  <header class="product-top container">
+    <a class="product-home" href="./"><span aria-hidden="true">←</span> Kaiserapps</a>
+  </header>
+  <main>
+    <section class="product-hero container">
+      <div class="product-hero-copy">
+        <img class="product-hero-icon" src="./product-media/{{product.slug}}/icon.webp" alt="" width="88" height="88">
+        <h1>{{product.name}}</h1>
+        <p class="product-headline">{{product.headline}}</p>
+        <p class="product-description">{{product.pitch}}</p>
+        <div class="product-actions" aria-label="Get {{product.name}}">
+          {{#each product.links}}
+            <a class="product-action{{#if @first}} product-action-primary{{/if}}" href="{{url}}">{{label}} <span aria-hidden="true">↗</span></a>
+          {{/each}}
+        </div>
+        {{#if product.availability}}<p class="product-availability">{{product.availability}}</p>{{/if}}
+      </div>
+      <div class="product-stage {{product.layout}}">
+        {{#with product.hero}}
+          <img src="./product-media/{{../product.slug}}/hero.webp" alt="{{alt}}" width="{{width}}" height="{{height}}" fetchpriority="high">
+        {{/with}}
+      </div>
+    </section>
+    <section class="product-features container" aria-labelledby="product-features">
+      <p class="product-eyebrow">{{product.category}}</p>
+      <h2 id="product-features">{{product.featureHeading}}</h2>
+      <ul class="product-feature-grid">
+        {{#each product.features}}
+          <li>
+            <span class="product-feature-mark" aria-hidden="true">✦</span>
+            <h3>{{title}}</h3>
+            <p>{{description}}</p>
+          </li>
+        {{/each}}
+      </ul>
+    </section>
+    {{#if product.gallery}}
+      <section class="product-gallery container" aria-labelledby="product-gallery">
+        <h2 id="product-gallery">A closer look</h2>
+        <div class="product-gallery-grid {{product.layout}}">
+          {{#each product.gallery}}
+            <figure>
+              <img src="./product-media/{{../product.slug}}/{{file}}.webp" alt="{{alt}}" width="{{width}}" height="{{height}}" loading="lazy" decoding="async">
+              <figcaption>{{caption}}</figcaption>
+            </figure>
+          {{/each}}
+        </div>
+      </section>
+    {{/if}}
+  </main>
+  <footer class="product-footer container">
+    <a class="product-home" href="./"><span aria-hidden="true">←</span> Kaiserapps</a>
+  </footer>
+</body>
+</html>

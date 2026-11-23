@@ -3,6 +3,10 @@
 Run `npm ci` and `npm run dev` for local development. `npm run build` generates
 the static site in `dist/`.
 
+The Products catalog and its standalone pages share the data in `src/products.js`.
+Each product has a root-level HTML entry and optimised artwork in
+`public/product-media/<slug>/`.
+
 Production runs on the `kaiserapps` Dokku app at `benkaiser.dev`. Push changes
 to its `master` branch to deploy:
 

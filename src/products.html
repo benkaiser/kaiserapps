@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products — Kaiserapps</title>
+  <meta name="description" content="Explore Kaiserapps products for learning, family time, Bible reading, AI workflows, and play.">
+  <link rel="icon" type="image/png" href="./static/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="./js/theme-toggle.js"></script>
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/products.css">
+</head>
+<body>
+  {{> nav}}
+  <main class="container product-catalog">
+    <header class="catalog-hero">
+      <div>
+        <p class="product-eyebrow">The Kaiserapps collection</p>
+        <h1>Products</h1>
+        <p>Apps for the way you learn, play, and work. Built independently, for real life.</p>
+      </div>
+      <div class="catalog-mosaic" aria-hidden="true">
+        {{#each productGroups}}
+          {{#with items.[0]}}
+            <img src="./product-media/{{slug}}/icon.webp" alt="" width="128" height="128">
+          {{/with}}
+        {{/each}}
+      </div>
+    </header>
+    {{#each productGroups}}
+      <section class="catalog-group" aria-labelledby="{{id}}">
+        <header class="catalog-group-heading">
+          <span aria-hidden="true">{{number}}</span>
+          <div>
+            <h2 id="{{id}}">{{name}}</h2>
+            <p>{{intro}}</p>
+          </div>
+        </header>
+        <ul class="catalog-grid">
+          {{#each items}}
+            <li>
+              <a class="catalog-card {{theme}}" href="./{{slug}}">
+                <img src="./product-media/{{slug}}/icon.webp" alt="" width="128" height="128" loading="lazy">
+                <div>
+                  <h3>{{name}}</h3>
+                  <p>{{pitch}}</p>
+                  <span class="catalog-platforms">{{platforms}}</span>
+                </div>
+                <span class="catalog-arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          {{/each}}
+        </ul>
+      </section>
+    {{/each}}
+  </main>
+  {{> footer}}
+</body>
+</html>
