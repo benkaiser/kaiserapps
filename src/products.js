@@ -277,6 +277,40 @@ export const productGroups = [
     ],
   },
   {
+    id: 'virtual-reality',
+    name: 'Virtual Reality',
+    items: [{
+      slug: 'vidgrid',
+      name: 'VidGrid',
+      theme: 'product-aurora',
+      platforms: 'Meta Quest 3 · Quest 3S',
+      headline: 'Your video library, all around you.',
+      pitch: 'A video wall for Meta Quest that lays the videos from your chosen folders into a tidy grid around you and plays up to 16 at once.',
+      description: 'Pick the folders on your headset and VidGrid fills a fixed grid in front of you with shuffled videos. Look at one to hear it, skip or rewind it with a button, and push the whole wall closer or further away.',
+      links: [
+        { label: 'Support', url: './vidgrid/support', internal: true },
+        { label: 'Privacy policy', url: './vidgrid/privacy', internal: true },
+      ],
+      availability: 'Coming soon to the Meta Horizon Store.',
+      layout: 'landscape',
+      hero: [shot('VidGrid artwork: a curved wall of glowing video panels beside the VidGrid wordmark', 1120, 630)],
+      featureHeading: 'A wall of video that stays out of your way',
+      features: [
+        feature('Audio follows your gaze', 'Hear only the video you’re looking at, or set audio focus lower to blend in the rest of the wall.'),
+        feature('Up to 16 at once', 'Play 4K and 60 fps files side by side. VidGrid balances the headset’s decoders so the wall stays smooth.'),
+        feature('Shuffle and skip', 'Skip a video, go back to the last one where it left off, or shuffle the whole wall with one button.'),
+      ],
+      details: {
+        heading: 'Set it up once, then just watch',
+        sections: [
+          { title: 'Your files, your folders', text: 'Copy videos to the headset’s Movies or Download folder over USB, then tick the folders you want. Each folder shows how many videos it holds. Side-by-side and over-under 3D files play in 3D.', items: ['Grid', 'Radial', 'Mosaic', 'Spiral', 'Panorama'] },
+          { title: 'Make the room yours', text: 'Choose a black, white, or passthrough background, change the padding between videos, and recenter the grid wherever you’re facing. Everything works from a chair.' },
+        ],
+        note: 'Fully offline. No accounts, ads, or tracking, and your videos never leave your headset.',
+      },
+    }],
+  },
+  {
     id: 'christian-software',
     name: 'Christian Software',
     items: [{

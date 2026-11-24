@@ -15,6 +15,7 @@
 .product-lilac { --product-ink: #542f78; --product-tint: #efe3fa; --product-glow: #d5acef; }
 .product-slate { --product-ink: #263c4f; --product-tint: #e1edf2; --product-glow: #a7ccd8; }
 .product-lime { --product-ink: #33461b; --product-tint: #edf5db; --product-glow: #c8e988; }
+.product-aurora { --product-ink: #1d4a5c; --product-tint: #e0eefa; --product-glow: #9fd8e3; }
 
 .product-catalog { padding-top: calc(var(--nav-height) + clamp(1.25rem, 4vw, 3rem)); }
 

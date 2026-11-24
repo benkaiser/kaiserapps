@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VidGrid Support — Kaiserapps</title>
+  <meta name="description" content="Help for VidGrid, the video wall app for Meta Quest: adding videos, controls, settings and troubleshooting.">
+  {{> site-share title="VidGrid Support — Kaiserapps"}}
+  <link rel="icon" type="image/png" href="../static/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="../js/theme-toggle.js"></script>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .support h2 { margin: var(--space-xl) 0 var(--space-sm); font-size: 1.4rem; }
+    .support h3 { margin: var(--space-lg) 0 var(--space-xs); font-size: 1.1rem; }
+    .support p, .support li, .support td { font-size: 1.05rem; line-height: 1.8; }
+    .support ol, .support ul { padding-left: 1.4rem; margin-bottom: var(--space-md); }
+    .support li { margin-bottom: var(--space-xs); }
+    .support table { width: 100%; border-collapse: collapse; margin: var(--space-sm) 0 var(--space-md); }
+    .support td { padding: .45rem .75rem; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+    .support td:first-child { width: 38%; font-weight: 600; color: var(--text-primary); }
+  </style>
+</head>
+<body>
+  {{> nav-nested}}
+
+  <div class="page-header">
+    <div class="container" style="max-width: 800px;">
+      <h1><span class="text-gradient">VidGrid Support</span></h1>
+      <p class="lead">Help for <a href="../vidgrid">VidGrid</a> on Meta Quest 3 and Quest 3S.</p>
+    </div>
+  </div>
+
+  <section class="section support" style="padding-top: 0;">
+    <div class="container" style="max-width: 800px;">
+      <h2>Getting started</h2>
+      <ol>
+        <li>Connect your headset to a computer with a USB-C cable and allow file access in the headset.</li>
+        <li>Copy your videos into the headset's <strong>Movies</strong> or <strong>Download</strong> folder. Subfolders are fine; each one appears in VidGrid's folder list.</li>
+        <li>Open VidGrid and allow access to your videos when asked.</li>
+        <li>Press the menu button (☰) on the left controller, tick the folders you want, and close the menu.</li>
+      </ol>
+      <p>VidGrid plays MP4, MKV, WebM and the other formats your headset supports, up to 4K at 60 fps.</p>
+
+      <h2>Controls</h2>
+      <table>
+        <tr><td>A</td><td>Next video in the cell you're looking at</td></tr>
+        <tr><td>B</td><td>Back to the previous video, where it left off</td></tr>
+        <tr><td>Right grip</td><td>Shuffle the videos on screen between cells</td></tr>
+        <tr><td>Right thumbstick ← / →</td><td>Seek the video you're looking at</td></tr>
+        <tr><td>Left thumbstick ↑ / ↓</td><td>Bring the grid closer or push it away</td></tr>
+        <tr><td>X</td><td>Change background: black, white, passthrough</td></tr>
+        <tr><td>Y</td><td>Change layout: Grid, Radial, Mosaic, Spiral, Panorama</td></tr>
+        <tr><td>Left trigger</td><td>Pause or resume everything</td></tr>
+        <tr><td>Menu (☰)</td><td>Open or close the folders and settings menu</td></tr>
+        <tr><td>Hold the Meta button</td><td>Recenter the grid in front of you</td></tr>
+      </table>
+
+      <h2>Settings</h2>
+      <ul>
+        <li><strong>Videos at once</strong>: how many videos play together, up to 16.</li>
+        <li><strong>Audio focus</strong>: at 100% you hear only the video you're looking at; at 0% every video plays at full volume.</li>
+        <li><strong>Distance</strong> and <strong>Padding</strong>: how far away the grid is and how much space sits between videos.</li>
+        <li><strong>Seek step</strong>: how far each thumbstick push jumps.</li>
+        <li><strong>3D videos</strong>: play side-by-side and over-under files in 3D, or show them flat.</li>
+        <li><strong>Start videos</strong>: start long videos part-way through, or always from the beginning.</li>
+      </ul>
+
+      <h2>Troubleshooting</h2>
+
+      <h3>My videos don't appear</h3>
+      <p>
+        Open the menu and press <strong>Rescan</strong>, which looks through the whole headset, including files
+        that were only just copied over. Check that the folder is ticked in the list. Folders whose names
+        start with a dot are hidden folders and are left unticked unless you tick them yourself.
+      </p>
+
+      <h3>VidGrid says it needs access to my videos</h3>
+      <p>
+        Press <strong>Allow video access</strong> in the menu. If you chose "Don't allow" before, press
+        <strong>Open settings</strong>, or go to Settings › Apps › VidGrid › Permissions on the headset and allow
+        Videos.
+      </p>
+
+      <h3>Playback stutters, or fewer videos play than I asked for</h3>
+      <p>
+        Very high-resolution files use more of the headset's video decoders. VidGrid lowers the number of
+        streams automatically when it runs out, then tries again later. Lowering <strong>Videos at once</strong>
+        or using 1080p copies of very large files keeps everything smooth.
+      </p>
+
+      <h3>A 3D video looks doubled or squashed</h3>
+      <p>
+        VidGrid spots 3D files from tags in the file or folder name: <code>SBS</code> or <code>HSBS</code> for
+        side-by-side, and <code>H-OU</code>, <code>H-TAB</code>, or <code>3D</code> together with
+        <code>OU</code> or <code>TAB</code> for over-under. Very wide videos are treated as side-by-side. Rename
+        the file to include the right tag, or switch <strong>3D videos</strong> to 2D in the menu.
+      </p>
+
+      <h3>The grid is behind me or off to one side</h3>
+      <p>Hold the Meta button to recenter, or press <strong>Recenter</strong> in the menu.</p>
+
+      <h2>Contact</h2>
+      <p>
+        Still stuck, or have an idea? Email <a href="mailto:support@kaiserapps.com">support@kaiserapps.com</a>
+        and mention VidGrid. Read how VidGrid handles your data in the <a href="./privacy">privacy policy</a>.
+      </p>
+    </div>
+  </section>
+
+  {{> footer}}
+</body>
+</html>

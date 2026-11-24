@@ -21,6 +21,7 @@ export default defineConfig({
         contact: resolve(__dirname, 'src/contact.html'),
         lab: resolve(__dirname, 'src/lab/index.html'),
         'vidgrid-privacy': resolve(__dirname, 'src/vidgrid/privacy.html'),
+        'vidgrid-support': resolve(__dirname, 'src/vidgrid/support.html'),
       },
     },
   },

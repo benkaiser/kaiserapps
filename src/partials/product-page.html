@@ -44,7 +44,7 @@
                 <img src="./store-icons/{{store}}.svg" width="25" height="25" alt="">
                 <span class="product-store-label"><small>{{caption}}</small>{{label}}</span>
               {{else}}
-                {{label}} <span aria-hidden="true">↗</span>
+                {{label}}{{#unless internal}} <span aria-hidden="true">↗</span>{{/unless}}
               {{/if}}
             </a>
           {{/each}}
