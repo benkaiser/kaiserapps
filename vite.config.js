@@ -20,6 +20,7 @@ export default defineConfig({
         ...Object.fromEntries(products.map(({ slug }) => [slug, resolve(__dirname, `src/${slug}.html`)])),
         contact: resolve(__dirname, 'src/contact.html'),
         lab: resolve(__dirname, 'src/lab/index.html'),
+        'vidgrid-privacy': resolve(__dirname, 'src/vidgrid/privacy.html'),
       },
     },
   },
